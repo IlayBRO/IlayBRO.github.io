@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הקישורים של Ilay</title>
+    <style>
+        /* עיצוב הרקע והגוף */
+        body {
+            background-color: #0f172a; /* צבע רקע כהה כמו בתמונה */
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* הקופסה שמכילה את הכל וממרכזת את התוכן */
+        .container {
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        /* עיצוב תמונת הפרופיל */
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 2px solid #334155;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+
+        /* עיצוב בסיסי לכפתורים */
+        .link-btn {
+            display: block;
+            background-color: #1e293b;
+            color: white;
+            text-decoration: none;
+            padding: 18px 20px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s ease; /* אנימציה חלקה למעבר העכבר */
+        }
+
+        /* --- אפקטים של ניאון במעבר עכבר (Hover) --- */
+        
+        /* אדום ליוטיוב */
+        .neon-red:hover {
+            border-color: #ff0050;
+            box-shadow: 0 0 15px #ff0050, 0 0 30px #ff0050;
+            color: #ff0050;
+            background-color: #1e293b;
+        }
+
+        /* כחול לדיסקורד */
+        .neon-blue:hover {
+            border-color: #5865F2;
+            box-shadow: 0 0 15px #5865F2, 0 0 30px #5865F2;
+            color: #5865F2;
+        }
+
+        /* ירוק לקיק */
+        .neon-green:hover {
+            border-color: #53fc18;
+            box-shadow: 0 0 15px #53fc18, 0 0 30px #53fc18;
+            color: #53fc18;
+        }
+
+        /* סגול לטוויץ' */
+        .neon-purple:hover {
+            border-color: #b000ff;
+            box-shadow: 0 0 15px #b000ff, 0 0 30px #b000ff;
+            color: #b000ff;
+        }
+        
+        /* כתום לרדיט */
+        .neon-orange:hover {
+            border-color: #ff4500;
+            box-shadow: 0 0 15px #ff4500, 0 0 30px #ff4500;
+            color: #ff4500;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="https://ui-avatars.com/api/?name=Ilay&background=random&color=fff&size=200" alt="לוגו" class="profile-pic">
+
+    <h2>הקישורים הרשמיים</h2>
+    <p style="color: #94a3b8; margin-bottom: 30px;">ברוכים הבאים לעמוד שלי!</p>
+
+    <a href="https://youtube.com" class="link-btn neon-red">YouTube - הערוץ הרשמי 📺</a>
+    
+    <a href="https://discord.com" class="link-btn neon-blue">הדיסקורד הרשמי 💬</a>
+    
+    <a href="https://kick.com" class="link-btn neon-green">Kick - לייבים 🟩</a>
+    
+    <a href="https://reddit.com" class="link-btn neon-orange">Reddit 🤖</a>
+    
+    <a href="https://twitch.tv" class="link-btn neon-purple">Twitch 👾</a>
+
+</div>
+
+</body>
+</html>
