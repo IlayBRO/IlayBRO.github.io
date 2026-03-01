@@ -16,31 +16,10 @@
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            padding-bottom: 100px;
+            padding-bottom: 120px; /* מרווח למטה כדי שהנגנים לא יסתירו */
             overflow-x: hidden;
             position: relative;
         }
-
-        /* --- אפקט כניסה חלק (מדורג) --- */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* הגדרה שכל אלמנט בתוך הקונטיינר יהיה שקוף בהתחלה ויקבל את האנימציה */
-        .container > * {
-            opacity: 0;
-            animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
-
-        /* עיכוב זמנים ליצירת אפקט "מפל" (אחד אחרי השני) */
-        .container .profile-pic { animation-delay: 0.1s; }
-        .container h2 { animation-delay: 0.2s; }
-        .container p { animation-delay: 0.3s; }
-        .container .link-btn:nth-of-type(1) { animation-delay: 0.4s; }
-        .container .link-btn:nth-of-type(2) { animation-delay: 0.5s; }
-        .container .link-btn:nth-of-type(3) { animation-delay: 0.6s; }
-        .container .link-btn:nth-of-type(4) { animation-delay: 0.7s; }
 
         /* --- אורות דקורטיביים בצדדים --- */
         .glow-orb {
@@ -52,7 +31,6 @@
             z-index: -1;
             opacity: 0.15;
             pointer-events: none;
-            animation: fadeUp 2s ease forwards; /* גם האורות נדלקים ברכות */
         }
         .orb-left { 
             background: radial-gradient(circle, #0dcaf0, transparent 70%); 
@@ -90,82 +68,112 @@
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 15px;
-            border: 2px solid #334155;
+            border: 2px solid rgba(255, 255, 255, 0.2); 
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
         }
 
+        /* --- הכפתורים עם אפקט הזכוכית (Glassmorphism) --- */
         .link-btn {
             display: block;
-            background-color: rgba(30, 41, 59, 0.6);
-            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px);
             color: white;
             text-decoration: none;
             padding: 18px 20px;
             margin-bottom: 16px;
             border-radius: 14px;
-            border: 1px solid rgba(51, 65, 85, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
             font-weight: bold;
             font-size: 17px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* אפקטי ניאון לכפתורים */
-        .neon-pink:hover { border-color: #ff1493; box-shadow: 0 0 20px #ff1493; color: #ff1493; transform: scale(1.02); }
-        .neon-spotify:hover { border-color: #1DB954; box-shadow: 0 0 20px #1DB954; color: #1DB954; transform: scale(1.02); }
-        .neon-red:hover { border-color: #ff0050; box-shadow: 0 0 20px #ff0050; color: #ff0050; transform: scale(1.02); }
-        .neon-green:hover { border-color: #53fc18; box-shadow: 0 0 20px #53fc18; color: #53fc18; transform: scale(1.02); }
+        .neon-pink:hover { border-color: #ff1493; box-shadow: 0 0 20px #ff1493; color: #ff1493; transform: scale(1.02); background: rgba(30, 41, 59, 0.8); }
+        .neon-spotify:hover { border-color: #1DB954; box-shadow: 0 0 20px #1DB954; color: #1DB954; transform: scale(1.02); background: rgba(30, 41, 59, 0.8); }
+        .neon-red:hover { border-color: #ff0050; box-shadow: 0 0 20px #ff0050; color: #ff0050; transform: scale(1.02); background: rgba(30, 41, 59, 0.8); }
+        .neon-green:hover { border-color: #53fc18; box-shadow: 0 0 20px #53fc18; color: #53fc18; transform: scale(1.02); background: rgba(30, 41, 59, 0.8); }
 
-        /* --- פוטר --- */
         .footer { 
-            margin-top: 50px; 
-            text-align: center; 
-            color: #94a3b8; 
-            font-size: 14px; 
-            z-index: 1; 
-            opacity: 0; 
-            animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.9s; /* מופיע אחרון */
+            margin-top: 50px; text-align: center; color: #94a3b8; font-size: 14px; z-index: 1; 
         }
         .discord-tag { color: #5865F2; font-weight: bold; }
 
-        /* --- נגן מוזיקה --- */
+        /* --- נגן מוזיקה (צד ימין למטה) --- */
         .floating-music-container { 
-            position: fixed; 
-            bottom: 30px; 
-            right: 30px; 
-            z-index: 1000; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: flex-end; 
-            opacity: 0;
-            animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards 1.1s; /* מופיע ממש בסוף האנימציה */
+            position: fixed; bottom: 30px; right: 30px; z-index: 1000; display: flex; flex-direction: column; align-items: flex-end; 
         }
+        .music-panel { background: rgba(30, 41, 59, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 18px; width: 300px; margin-bottom: 15px; display: none; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
+        .music-panel.show { display: block; }
         
-        .music-panel { 
-            background: #1e293b; 
-            border: 1px solid #334155; 
-            border-radius: 20px; 
-            padding: 18px; 
-            width: 300px; 
-            margin-bottom: 15px; 
-            display: none; 
-            box-shadow: 0 10px 40px rgba(0,0,0,0.6); 
-        }
-        
-        .music-panel.show { display: block; animation: slideUp 0.3s ease; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .artist-btn {
-            background-color: #0f172a; color: white; border: 1px solid #334155;
-            padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s;
-        }
-        .artist-btn:hover { background-color: #334155; border-color: #e2e8f0; }
+        .artist-btn { background-color: rgba(255, 255, 255, 0.05); color: white; border: 1px solid rgba(255, 255, 255, 0.1); padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+        .artist-btn:hover { background-color: rgba(255, 255, 255, 0.15); border-color: white; }
 
         .music-toggle-btn { 
-            background: linear-gradient(45deg, #ff0050, #b000ff); color: white; border: none; 
-            padding: 16px 28px; border-radius: 50px; font-weight: bold; cursor: pointer; box-shadow: 0 5px 20px rgba(255, 0, 80, 0.4);
-            transition: transform 0.2s;
+            background: linear-gradient(45deg, #ff0050, #b000ff); color: white; border: none; padding: 16px 28px; border-radius: 50px; font-weight: bold; cursor: pointer; box-shadow: 0 5px 20px rgba(255, 0, 80, 0.4); transition: transform 0.2s;
         }
         .music-toggle-btn:hover { transform: scale(1.05); }
+
+        /* --- כפתור שיתוף משולב מונה (צד שמאל למטה) - בדיוק לפי התמונה --- */
+        .floating-share-container {
+            position: fixed; bottom: 30px; left: 30px; z-index: 1000;
+        }
+
+        .share-btn-glass {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+            padding: 0;
+        }
+        
+        .share-btn-glass:hover { transform: scale(1.05); }
+
+        /* האזור הכחול/טורקיז של המונה (צד שמאל) */
+        .counter-section {
+            background: linear-gradient(45deg, rgba(13, 202, 240, 0.1), rgba(88, 101, 242, 0.1));
+            color: #0dcaf0;
+            padding: 16px 20px;
+            font-weight: bold;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* התג של המונה שמושך את המספר האמיתי מיוטיוב/גיטהאב */
+        .views-badge {
+            filter: drop-shadow(0 0 5px rgba(13, 202, 240, 0.7));
+            height: 18px;
+            vertical-align: middle;
+        }
+
+        /* האזור הוורוד/אדום של הטקסט (צד ימין) */
+        .text-section {
+            color: #ff1493;
+            padding: 16px 25px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        /* עיצוב לכפתור כשהוא במצב "הועתק" */
+        .share-btn-glass.copied .text-section {
+            color: #20c997;
+        }
+        .share-btn-glass.copied .counter-section {
+            color: #20c997;
+            background: linear-gradient(45deg, rgba(32, 201, 151, 0.1), rgba(29, 185, 84, 0.1));
+        }
     </style>
 </head>
 <body>
@@ -177,10 +185,8 @@
     <div class="container">
         <img src="https://cdn.discordapp.com/avatars/1184520166059540563/794631dae2d89e31e1d4120cce221f30.png?size=512" class="profile-pic">
         <h2 style="margin-bottom: 5px;">Potteerr</h2>
-        <p style="color: #94a3b8; margin-bottom: 35px;">הקישורים שלי</p>
-<div style="margin-bottom: 30px;">
-    <img src="https://komarev.com/ghpvc/?username=ilaybro-official-site&label=Views&color=ff0050&style=flat" alt="Views" style="border-radius: 5px; box-shadow: 0 0 15px rgba(255,0,80,0.4);">
-</div>
+        <p style="color: #94a3b8; margin-bottom: 35px;">הקישורים הרשמיים שלי</p>
+
         <a href="songs" class="link-btn neon-pink">השירים שאהבתי 💖</a>
         <a href="https://open.spotify.com/playlist/6rhTWIqKgjJhP6cCEYd2G2?si=1ca29203b74443d2" class="link-btn neon-spotify" target="_blank">הפלייליסטים שלי בספוטיפיי 🎧</a>
         <a href="https://www.youtube.com/@Ilay-Potteerr" class="link-btn neon-red" target="_blank">YouTube - הערוץ הרשמי 📺</a>
@@ -205,17 +211,43 @@
         <button class="music-toggle-btn" onclick="toggleMusic()">מוזיקה 🎵</button>
     </div>
 
+    <div class="floating-share-container">
+        <button class="share-btn-glass" id="combinedBtn" onclick="copyMyLink()">
+            <div class="counter-section">
+                <img src="https://komarev.com/ghpvc/?username=ilaybro-official-site&label=Views&color=0dcaf0&style=flat-square&labelColor=0b1120" alt="Views" class="views-badge">
+            </div>
+            <div class="text-section" id="shareText">
+                🔗 שתף את האתר
+            </div>
+        </button>
+    </div>
+
     <script>
-        // האור שעוקב אחרי העכבר
+        // עוקב עכבר
         const glow = document.getElementById('cursor-glow');
         document.addEventListener('mousemove', (e) => {
             glow.style.left = e.clientX + 'px';
             glow.style.top = e.clientY + 'px';
         });
 
-        // נגן המוזיקה
         function toggleMusic() { document.getElementById("musicPanel").classList.toggle("show"); }
         function changePlaylist(id) { document.getElementById("yt-player").src = "https://www.youtube.com/embed/videoseries?list=" + id + "&autoplay=1"; }
+
+        function copyMyLink() {
+            const siteUrl = window.location.href.split('?')[0].replace('index.html', '');
+            navigator.clipboard.writeText(siteUrl).then(() => {
+                const btn = document.getElementById("combinedBtn");
+                const textSection = document.getElementById("shareText");
+                
+                textSection.innerHTML = "✅ הועתק!";
+                btn.classList.add("copied");
+                
+                setTimeout(() => {
+                    textSection.innerHTML = "🔗 שתף את האתר";
+                    btn.classList.remove("copied");
+                }, 2000);
+            });
+        }
     </script>
 </body>
 </html>
