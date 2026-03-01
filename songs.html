@@ -18,13 +18,12 @@
 
         h1 { margin-bottom: 40px; text-shadow: 0 0 10px #ff1493; }
 
-        /* גריד השירים - דומה לצילום המסך ששלחת */
         .songs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
             width: 100%;
-            max-width: 1100px;
+            max-width: 1200px;
         }
 
         .song-card {
@@ -32,32 +31,53 @@
             border-radius: 15px;
             overflow: hidden;
             border: 1px solid #334155;
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-decoration: none;
-            color: white;
-            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
         }
 
         .song-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 0 20px rgba(255, 20, 147, 0.4);
             border-color: #ff1493;
         }
 
-        .thumbnail {
-            width: 100%;
-            aspect-ratio: 16/9;
-            object-fit: cover;
-            border-bottom: 2px solid #ff1493;
+        /* נגן יוטיוב מובנה */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* יחס 16:9 */
+            height: 0;
+            overflow: hidden;
         }
 
-        .song-info { padding: 15px; }
-        .song-title { font-weight: bold; font-size: 18px; margin-bottom: 5px; display: block; }
-        .song-artist { color: #94a3b8; font-size: 14px; }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .song-info {
+            padding: 20px;
+            text-align: right;
+        }
+
+        .song-title {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #f8fafc;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .song-artist {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
 
         .back-btn {
             margin-top: 50px;
-            padding: 12px 25px;
+            padding: 12px 30px;
             background-color: #1e293b;
             border: 1px solid #ff1493;
             border-radius: 50px;
@@ -67,7 +87,10 @@
             transition: 0.3s;
         }
 
-        .back-btn:hover { background-color: #ff1493; box-shadow: 0 0 15px #ff1493; }
+        .back-btn:hover {
+            background-color: #ff1493;
+            box-shadow: 0 0 20px #ff1493;
+        }
     </style>
 </head>
 <body>
@@ -75,45 +98,57 @@
     <h1>🎵 השירים שאהבתי</h1>
 
     <div class="songs-grid">
-        <a href="https://youtu.be/IPZKwAh7omQ" target="_blank" class="song-card">
-            <img src="https://img.youtube.com/vi/IPZKwAh7omQ/maxresdefault.jpg" class="thumbnail">
+        
+        <div class="song-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/IPZKwAh7omQ" allowfullscreen></iframe>
+            </div>
             <div class="song-info">
                 <span class="song-title">שליח פיצה</span>
                 <span class="song-artist">Delivery Crew</span>
             </div>
-        </a>
+        </div>
 
-        <a href="https://youtu.be/Ld4gUCnsZ4I" target="_blank" class="song-card">
-            <img src="https://img.youtube.com/vi/Ld4gUCnsZ4I/maxresdefault.jpg" class="thumbnail">
-            <div class="song-info">
-                <span class="song-title">רק אני</span>
-                <span class="song-artist">עומר אדם</span>
+        <div class="song-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/Ld4gUCnsZ4I" allowfullscreen></iframe>
             </div>
-        </a>
-
-        <a href="https://youtu.be/whvYpDdkeOQ" target="_blank" class="song-card">
-            <img src="https://img.youtube.com/vi/whvYpDdkeOQ/maxresdefault.jpg" class="thumbnail">
             <div class="song-info">
-                <span class="song-title">תרקדי</span>
-                <span class="song-artist">אושר כהן</span>
+                <span class="song-title">עומר אדם - רק אני</span>
+                <span class="song-artist">עומר אדם - Omer Adam</span>
             </div>
-        </a>
+        </div>
 
-        <a href="https://youtu.be/P7KZkYd-8Ng" target="_blank" class="song-card">
-            <img src="https://img.youtube.com/vi/P7KZkYd-8Ng/maxresdefault.jpg" class="thumbnail">
-            <div class="song-info">
-                <span class="song-title">אהבה חולה</span>
-                <span class="song-artist">אושר כהן</span>
+        <div class="song-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/whvYpDdkeOQ" allowfullscreen></iframe>
             </div>
-        </a>
-
-        <a href="https://youtu.be/COLsRUrV6Eo" target="_blank" class="song-card">
-            <img src="https://img.youtube.com/vi/COLsRUrV6Eo/maxresdefault.jpg" class="thumbnail">
             <div class="song-info">
-                <span class="song-title">Never Gonna Give You Up (כמובן שזה לטרול...)</span>
+                <span class="song-title">אושר כהן - תרקדי</span>
+                <span class="song-artist">אושר כהן - Osher Cohen</span>
+            </div>
+        </div>
+
+        <div class="song-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/P7KZkYd-8Ng" allowfullscreen></iframe>
+            </div>
+            <div class="song-info">
+                <span class="song-title">אושר כהן - אהבה חולה</span>
+                <span class="song-artist">אושר כהן - Osher Cohen</span>
+            </div>
+        </div>
+
+        <div class="song-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/COLsRUrV6Eo" allowfullscreen></iframe>
+            </div>
+            <div class="song-info">
+                <span class="song-title">Rick Astley - Never Gonna Give You Up (כמובן שזה לטרול...)</span>
                 <span class="song-artist">Rick Astley</span>
             </div>
-        </a>
+        </div>
+
     </div>
 
     <a href="index.html" class="back-btn">🏠 חזרה לדף הראשי</a>
