@@ -21,6 +21,27 @@
             position: relative;
         }
 
+        /* --- אפקט כניסה חלק ובטוח --- */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* החלה על כל מה שבתוך הקונטיינר (תמונה, טקסט, כפתורים) */
+        .container > * {
+            /* המילה both מוודאת שהאלמנט לא ייתקע על שקוף! */
+            animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+        }
+
+        /* עיכוב זמנים ליצירת אפקט "מפל" */
+        .container .profile-pic { animation-delay: 0.1s; }
+        .container h2 { animation-delay: 0.2s; }
+        .container p { animation-delay: 0.3s; }
+        .container .link-btn:nth-of-type(1) { animation-delay: 0.4s; }
+        .container .link-btn:nth-of-type(2) { animation-delay: 0.5s; }
+        .container .link-btn:nth-of-type(3) { animation-delay: 0.6s; }
+        .container .link-btn:nth-of-type(4) { animation-delay: 0.7s; }
+
         /* --- אורות דקורטיביים בצדדים --- */
         .glow-orb {
             position: fixed;
@@ -31,6 +52,8 @@
             z-index: -1;
             opacity: 0.15;
             pointer-events: none;
+            /* גם האורות נדלקים ברכות */
+            animation: fadeUp 2s ease both;
         }
         .orb-left { background: radial-gradient(circle, #0dcaf0, transparent 70%); bottom: -200px; left: -300px; }
         .orb-right { background: radial-gradient(circle, #20c997, transparent 70%); bottom: -200px; right: -300px; }
@@ -87,11 +110,18 @@
         .neon-red:hover { border-color: #ff0050; box-shadow: 0 0 20px #ff0050; color: #ff0050; transform: scale(1.02); background: rgba(30, 41, 59, 0.8); }
         .neon-green:hover { border-color: #53fc18; box-shadow: 0 0 20px #53fc18; color: #53fc18; transform: scale(1.02); background: rgba(30, 41, 59, 0.8); }
 
-        .footer { margin-top: 50px; text-align: center; color: #94a3b8; font-size: 14px; z-index: 1; }
+        /* הפוטר מקבל אנימציה ומופיע אחרי הכפתורים */
+        .footer { 
+            margin-top: 50px; text-align: center; color: #94a3b8; font-size: 14px; z-index: 1; 
+            animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) both 0.9s;
+        }
         .discord-tag { color: #5865F2; font-weight: bold; }
 
         /* --- כפתור ונגן מוזיקה (צד ימין למטה) --- */
-        .floating-music-container { position: fixed; bottom: 30px; right: 30px; z-index: 1000; display: flex; flex-direction: column; align-items: flex-end; }
+        .floating-music-container { 
+            position: fixed; bottom: 30px; right: 30px; z-index: 1000; display: flex; flex-direction: column; align-items: flex-end; 
+            animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) both 1.1s; /* מופיע בסוף */
+        }
         .music-panel { background: rgba(30, 41, 59, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 18px; width: 300px; margin-bottom: 15px; display: none; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
         .music-panel.show { display: block; }
         .artist-btn { background-color: rgba(255, 255, 255, 0.05); color: white; border: 1px solid rgba(255, 255, 255, 0.1); padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; margin: 3px; }
@@ -100,7 +130,10 @@
         .music-toggle-btn:hover { transform: scale(1.05); }
 
         /* --- כפתור שיתוף זכוכית (צד שמאל למטה) --- */
-        .floating-share-container { position: fixed; bottom: 30px; left: 30px; z-index: 1000; }
+        .floating-share-container { 
+            position: fixed; bottom: 30px; left: 30px; z-index: 1000; 
+            animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) both 1.1s; /* מופיע יחד עם המוזיקה */
+        }
         .share-btn { 
             background: rgba(255, 255, 255, 0.05); 
             backdrop-filter: blur(15px); 
