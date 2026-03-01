@@ -7,7 +7,7 @@
     <style>
         /* עיצוב הרקע והגוף */
         body {
-            background-color: #0f172a; /* צבע רקע כהה כמו בתמונה */
+            background-color: #0f172a;
             color: white;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
@@ -15,6 +15,7 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
+            padding-bottom: 50px; /* קצת מרווח למטה כדי שהנגן לא יסתיר את הכפתורים */
         }
 
         /* הקופסה שמכילה את הכל וממרכזת את התוכן */
@@ -22,6 +23,7 @@
             width: 90%;
             max-width: 500px;
             text-align: center;
+            z-index: 1;
         }
 
         /* עיצוב תמונת הפרופיל */
@@ -47,45 +49,94 @@
             border: 1px solid #334155;
             font-weight: bold;
             font-size: 16px;
-            transition: all 0.3s ease; /* אנימציה חלקה למעבר העכבר */
+            transition: all 0.3s ease;
         }
 
         /* --- אפקטים של ניאון במעבר עכבר (Hover) --- */
+        .neon-red:hover { border-color: #ff0050; box-shadow: 0 0 15px #ff0050, 0 0 30px #ff0050; color: #ff0050; background-color: #1e293b; }
+        .neon-blue:hover { border-color: #5865F2; box-shadow: 0 0 15px #5865F2, 0 0 30px #5865F2; color: #5865F2; }
+        .neon-green:hover { border-color: #53fc18; box-shadow: 0 0 15px #53fc18, 0 0 30px #53fc18; color: #53fc18; }
+        .neon-purple:hover { border-color: #b000ff; box-shadow: 0 0 15px #b000ff, 0 0 30px #b000ff; color: #b000ff; }
+        .neon-orange:hover { border-color: #ff4500; box-shadow: 0 0 15px #ff4500, 0 0 30px #ff4500; color: #ff4500; }
         
-        /* אדום ליוטיוב */
-        .neon-red:hover {
-            border-color: #ff0050;
-            box-shadow: 0 0 15px #ff0050, 0 0 30px #ff0050;
-            color: #ff0050;
+        /* צבעים חדשים! */
+        .neon-pink:hover { border-color: #ff1493; box-shadow: 0 0 15px #ff1493, 0 0 30px #ff1493; color: #ff1493; }
+        .neon-spotify:hover { border-color: #1DB954; box-shadow: 0 0 15px #1DB954, 0 0 30px #1DB954; color: #1DB954; }
+
+        /* --- עיצוב נגן המוזיקה הצף מצד ימין למטה --- */
+        .floating-music-container {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; /* יישור לימין */
+        }
+
+        .music-panel {
             background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 15px;
+            padding: 15px;
+            width: 280px;
+            margin-bottom: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            display: none; /* מוסתר כברירת מחדל */
+            text-align: center;
         }
 
-        /* כחול לדיסקורד */
-        .neon-blue:hover {
-            border-color: #5865F2;
-            box-shadow: 0 0 15px #5865F2, 0 0 30px #5865F2;
-            color: #5865F2;
+        /* קלאס שיוסיף את החלונית עם אנימציה */
+        .music-panel.show {
+            display: block;
+            animation: popUp 0.3s ease-out;
         }
 
-        /* ירוק לקיק */
-        .neon-green:hover {
-            border-color: #53fc18;
-            box-shadow: 0 0 15px #53fc18, 0 0 30px #53fc18;
-            color: #53fc18;
+        @keyframes popUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* סגול לטוויץ' */
-        .neon-purple:hover {
-            border-color: #b000ff;
-            box-shadow: 0 0 15px #b000ff, 0 0 30px #b000ff;
-            color: #b000ff;
+        .music-panel h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #e2e8f0;
         }
-        
-        /* כתום לרדיט */
-        .neon-orange:hover {
-            border-color: #ff4500;
-            box-shadow: 0 0 15px #ff4500, 0 0 30px #ff4500;
-            color: #ff4500;
+
+        .artist-btn {
+            background-color: #0f172a;
+            color: white;
+            border: 1px solid #334155;
+            padding: 8px 15px;
+            border-radius: 8px;
+            margin: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: bold;
+        }
+
+        .artist-btn:hover {
+            background-color: #334155;
+            border-color: #e2e8f0;
+        }
+
+        .music-toggle-btn {
+            background: linear-gradient(45deg, #ff0050, #b000ff);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 0, 80, 0.5);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .music-toggle-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(176, 0, 255, 0.8);
         }
     </style>
 </head>
@@ -97,17 +148,48 @@
     <h2>הקישורים הרשמיים</h2>
     <p style="color: #94a3b8; margin-bottom: 30px;">ברוכים הבאים לעמוד שלי!</p>
 
+    <a href="#" class="link-btn neon-pink">השירים שאהבתי 💖</a>
+    <a href="https://spotify.com" class="link-btn neon-spotify">הפלייליסטים שלי בספוטיפיי 🎧</a>
+    
     <a href="https://www.youtube.com/@Ilay-Potteerr" class="link-btn neon-red">YouTube - הערוץ הרשמי 📺</a>
-    
     <a href="https://discord.com" class="link-btn neon-blue">הדיסקורד הרשמי 💬</a>
-    
     <a href="https://kick.com/ilay2342" class="link-btn neon-green">Kick - לייבים 🟩</a>
-    
     <a href="https://reddit.com" class="link-btn neon-orange">Reddit 🤖</a>
-    
     <a href="https://twitch.tv" class="link-btn neon-purple">Twitch 👾</a>
+</div>
+
+<div class="floating-music-container">
+    
+    <div class="music-panel" id="musicPanel">
+        <h3>🎵 הלהיטים החמים</h3>
+        
+        <iframe id="yt-player" width="100%" height="150" src="https://www.youtube.com/embed?listType=search&list=עומר+אדם" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="border-radius: 10px; margin-bottom: 10px;"></iframe>
+        
+        <div>
+            <button class="artist-btn" onclick="changeArtist('עומר+אדם')">עומר אדם</button>
+            <button class="artist-btn" onclick="changeArtist('אושר+כהן')">אושר כהן</button>
+            <button class="artist-btn" onclick="changeArtist('פאר+טסי')">פאר טסי</button>
+        </div>
+    </div>
+
+    <button class="music-toggle-btn" onclick="toggleMusic()">מוזיקה 🎵</button>
 
 </div>
+
+<script>
+    // פונקציה לפתיחה וסגירה של חלונית המוזיקה
+    function toggleMusic() {
+        var panel = document.getElementById("musicPanel");
+        panel.classList.toggle("show");
+    }
+
+    // פונקציה שמחליפה את הזמר בנגן היוטיוב
+    function changeArtist(artistName) {
+        var iframe = document.getElementById("yt-player");
+        // אנחנו אומרים ליוטיוב לחפש אוטומטית פלייליסט של הזמר שנבחר
+        iframe.src = "https://www.youtube.com/embed?listType=search&list=" + artistName + "&autoplay=1";
+    }
+</script>
 
 </body>
 </html>
