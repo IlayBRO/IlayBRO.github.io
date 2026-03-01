@@ -11,19 +11,21 @@
             color: white;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             min-height: 100vh;
             margin: 0;
+            padding-top: 50px;
             padding-bottom: 50px;
         }
 
-        /* הקופסה שמכילה את הכל וממרכזת את התוכן */
+        /* הקופסה הראשית שמכילה את הקישורים */
         .container {
             width: 90%;
             max-width: 500px;
             text-align: center;
             z-index: 1;
+            margin-bottom: 50px;
         }
 
         /* עיצוב תמונת הפרופיל */
@@ -58,6 +60,95 @@
         .neon-pink:hover { border-color: #ff1493; box-shadow: 0 0 15px #ff1493, 0 0 30px #ff1493; color: #ff1493; }
         .neon-spotify:hover { border-color: #1DB954; box-shadow: 0 0 15px #1DB954, 0 0 30px #1DB954; color: #1DB954; }
 
+        /* --- עיצוב אזור המדריך (איך יצרנו את האתר) --- */
+        .tutorial-container {
+            width: 90%;
+            max-width: 700px;
+            background-color: #1e293b;
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid #334155;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 40px;
+            text-align: right;
+        }
+
+        .tutorial-title {
+            text-align: center;
+            color: #e2e8f0;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        /* עיצוב הלשוניות של המדריך */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .tab-btn {
+            background-color: #0f172a;
+            color: #94a3b8;
+            border: 1px solid #334155;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .tab-btn:hover {
+            background-color: #334155;
+            color: white;
+        }
+
+        .tab-btn.active {
+            background-color: #5865F2; /* צבע דיסקורד */
+            border-color: #5865F2;
+            color: white;
+            box-shadow: 0 0 10px rgba(88, 101, 242, 0.5);
+        }
+
+        .tab-content {
+            display: none;
+            background-color: #0f172a;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            line-height: 1.6;
+            color: #cbd5e1;
+            animation: fadeIn 0.4s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-content h3 {
+            color: #5865F2;
+            margin-top: 0;
+        }
+
+        /* עיצוב תיבות קוד בתוך המדריך */
+        pre {
+            background-color: #000;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            direction: ltr;
+            text-align: left;
+            border: 1px solid #334155;
+        }
+        
+        code {
+            font-family: Consolas, monospace;
+            color: #53fc18;
+        }
+
         /* --- עיצוב נגן המוזיקה הצף מצד ימין למטה --- */
         .floating-music-container {
             position: fixed;
@@ -84,11 +175,6 @@
         .music-panel.show {
             display: block;
             animation: popUp 0.3s ease-out;
-        }
-
-        @keyframes popUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .music-panel h3 {
@@ -132,6 +218,26 @@
             transform: scale(1.05);
             box-shadow: 0 0 25px rgba(176, 0, 255, 0.8);
         }
+
+        /* --- עיצוב הפוטר (תחתית העמוד) --- */
+        .footer {
+            text-align: center;
+            width: 100%;
+            margin-top: 20px;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        .footer .contact {
+            color: #e2e8f0;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        
+        .footer .discord-tag {
+            color: #5865F2; /* צבע דיסקורד */
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -148,38 +254,42 @@
     <a href="https://kick.com/ilay2342" class="link-btn neon-green">Kick - לייבים 🟩</a>
 </div>
 
-<div class="floating-music-container">
+<div class="tutorial-container">
+    <h2 class="tutorial-title">🛠️ איך יצרנו את האתר?</h2>
     
-    <div class="music-panel" id="musicPanel">
-        <h3>🎵 הלהיטים החמים</h3>
-        
-        <iframe id="yt-player" width="100%" height="150" src="https://www.youtube.com/embed/videoseries?list=PLojCWQm27CqgXW7r_j6yV-addX4hR_ARF" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="border-radius: 10px; margin-bottom: 10px;"></iframe>
-        
-        <div>
-            <button class="artist-btn" onclick="changePlaylist('PLojCWQm27CqgXW7r_j6yV-addX4hR_ARF')">עומר אדם</button>
-            <button class="artist-btn" onclick="changePlaylist('PLBuClMIvTbnKjfAWSbHXNiBkEmKo6dQrn')">אושר כהן</button>
-            <button class="artist-btn" onclick="changePlaylist('PLRoAcjYkU72CK-54sA6hgYPvj1zUVCvuV')">פאר טסי</button>
-        </div>
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'step1')">1. GitHub ופתיחת מאגר</button>
+        <button class="tab-btn" onclick="openTab(event, 'step2')">2. מה זה README?</button>
+        <button class="tab-btn" onclick="openTab(event, 'step3')">3. קוד האתר (HTML)</button>
+        <button class="tab-btn" onclick="openTab(event, 'step4')">4. עיצוב וניאון (CSS)</button>
     </div>
 
-    <button class="music-toggle-btn" onclick="toggleMusic()">מוזיקה 🎵</button>
+    <div id="step1" class="tab-content" style="display: block;">
+        <h3>שלב 1: פתיחת המאגר ב-GitHub</h3>
+        <p>כדי שהאתר שלנו יהיה באוויר ובחינם, השתמשנו בשירות שנקרא <b>GitHub Pages</b>. ככה עושים את זה:</p>
+        <ol>
+            <li>נרשמים ופותחים משתמש חינמי באתר GitHub.</li>
+            <li>לוחצים על הכפתור הירוק <b>New Repository</b> כדי ליצור "תיקיית עבודה" חדשה ברשת.</li>
+            <li>הסוד הוא בשם המאגר: כדי שהאתר יקבל את הכתובת הראשית, חובה לקרוא למאגר בדיוק בשם המשתמש שלכם פלוס הסיומת, למשל: <code>username.github.io</code>.</li>
+            <li>מוודאים שהמאגר מוגדר כ-<b>Public</b> (פומבי) ולוחצים Create.</li>
+        </ol>
+    </div>
 
-</div>
+    <div id="step2" class="tab-content">
+        <h3>מה זה קובץ README?</h3>
+        <p>קובץ ה-<b>README.md</b> הוא בעצם "עמוד השער" או תעודת הזהות של הפרויקט שלכם ב-GitHub.</p>
+        <p>כשמישהו נכנס למאגר הקוד שלכם, זה הדבר הראשון שהוא קורא. הוא נועד להסביר במילים פשוטות למה האתר הזה נועד, מי בנה אותו, ואיך להשתמש בו.</p>
+        <p>הקובץ נכתב בשפה קלה שנקראת Markdown, המאפשרת לעשות כותרות והדגשות בעזרת סימנים פשוטים (כמו <code>#</code> לכותרת או <code>**</code> לטקסט מודגש).</p>
+    </div>
 
-<script>
-    // פונקציה לפתיחה וסגירה של חלונית המוזיקה
-    function toggleMusic() {
-        var panel = document.getElementById("musicPanel");
-        panel.classList.toggle("show");
-    }
+    <div id="step3" class="tab-content">
+        <h3>שלב 3: כתיבת הקוד (index.html)</h3>
+        <p>השלד של כל אתר אינטרנט נקרא HTML. במאגר שלנו, יצרנו קובץ בשם <code>index.html</code> (חובה לכתוב באותיות קטנות כדי שהשרת יזהה אותו כעמוד הבית).</p>
+        <p>כדי ליצור כפתור שמקשר למקום אחר, השתמשנו בתגית ה-<code>&lt;a&gt;</code>. הנה דוגמה לאיך שכפתור יוטיוב בנוי בקוד:</p>
+<pre><code>&lt;a href="https://youtube.com" class="link-btn neon-red"&gt;
+    YouTube - הערוץ הרשמי 📺
+&lt;/a&gt;</code></pre>
+        <p>בתוך ה-<code>href</code> שמים את הקישור, ובתוך ה-<code>class</code> שמים את המחלקות שאחראיות על העיצוב.</p>
+    </div>
 
-    // פונקציה שמחליפה את הפלייליסט בנגן
-    function changePlaylist(playlistId) {
-        var iframe = document.getElementById("yt-player");
-        // הפקודה videoseries אומרת ליוטיוב לנגן רשימת השמעה שלמה
-        iframe.src = "https://www.youtube.com/embed/videoseries?list=" + playlistId + "&autoplay=1";
-    }
-</script>
-
-</body>
-</html>
+    <div id="step4" class="
