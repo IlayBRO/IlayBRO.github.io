@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Potteerr</title>
+    <title>Potteerr | Official Links</title>
     <style>
-        /* עיצוב הרקע והגוף */
+        /* הגדרות בסיסיות */
         body {
-            background-color: #0f172a;
+            background-color: #0b1120; /* צבע רקע טיפה יותר כהה כדי שהאורות יבלטו טוב יותר */
             color: white;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
@@ -16,341 +16,212 @@
             min-height: 100vh;
             margin: 0;
             padding-top: 50px;
-            padding-bottom: 100px; /* הוספתי עוד קצת מרווח למטה כדי שהנגן לא יסתיר את הפוטר */
+            padding-bottom: 120px;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        /* הקופסה הראשית שמכילה את הקישורים */
+        /* --- אורות דקורטיביים בצדדים (בדיוק כמו בתמונה) --- */
+        .glow-orb {
+            position: fixed;
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            filter: blur(150px);
+            z-index: -1;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+        /* אור טורקיז משמאל למטה */
+        .orb-left { 
+            background: radial-gradient(circle, #0dcaf0, transparent 70%); 
+            bottom: -200px; 
+            left: -300px; 
+        }
+        /* אור ירוק מימין למטה */
+        .orb-right { 
+            background: radial-gradient(circle, #20c997, transparent 70%); 
+            bottom: -200px; 
+            right: -300px; 
+        }
+
+        /* --- אור לבן עדין שעוקב אחרי העכבר --- */
+        #cursor-glow {
+            position: fixed;
+            top: 0; left: 0;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        /* קונטיינר כפתורים */
         .container {
             width: 90%;
             max-width: 500px;
             text-align: center;
+            margin-bottom: 120px;
             z-index: 1;
-            margin-bottom: 50px;
         }
 
-        /* עיצוב תמונת הפרופיל */
         .profile-pic {
-            width: 120px;
-            height: 120px;
+            width: 130px; height: 130px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             border: 2px solid #334155;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
         }
 
-        /* עיצוב בסיסי לכפתורים */
         .link-btn {
             display: block;
-            background-color: #1e293b;
+            background-color: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(8px);
             color: white;
             text-decoration: none;
             padding: 18px 20px;
-            margin-bottom: 15px;
-            border-radius: 12px;
-            border: 1px solid #334155;
+            margin-bottom: 16px;
+            border-radius: 14px;
+            border: 1px solid rgba(51, 65, 85, 0.5);
             font-weight: bold;
-            font-size: 16px;
-            transition: all 0.3s ease;
+            font-size: 17px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* --- אפקטים של ניאון במעבר עכבר (Hover) --- */
-        .neon-red:hover { border-color: #ff0050; box-shadow: 0 0 15px #ff0050, 0 0 30px #ff0050; color: #ff0050; background-color: #1e293b; }
-        .neon-green:hover { border-color: #53fc18; box-shadow: 0 0 15px #53fc18, 0 0 30px #53fc18; color: #53fc18; }
-        .neon-pink:hover { border-color: #ff1493; box-shadow: 0 0 15px #ff1493, 0 0 30px #ff1493; color: #ff1493; }
-        .neon-spotify:hover { border-color: #1DB954; box-shadow: 0 0 15px #1DB954, 0 0 30px #1DB954; color: #1DB954; }
+        /* אפקטי ניאון לכפתורים */
+        .neon-pink:hover { border-color: #ff1493; box-shadow: 0 0 20px #ff1493; color: #ff1493; }
+        .neon-spotify:hover { border-color: #1DB954; box-shadow: 0 0 20px #1DB954; color: #1DB954; }
+        .neon-red:hover { border-color: #ff0050; box-shadow: 0 0 20px #ff0050; color: #ff0050; }
+        .neon-green:hover { border-color: #53fc18; box-shadow: 0 0 20px #53fc18; color: #53fc18; }
 
-        /* --- עיצוב אזור המדריך --- */
+        /* --- אזור המדריך --- */
         .tutorial-container {
             width: 90%;
-            max-width: 700px;
-            background-color: #1e293b;
-            border-radius: 15px;
-            padding: 25px;
-            border: 1px solid #334155;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-bottom: 40px;
+            max-width: 750px;
+            background-color: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: right;
         }
 
-        .tutorial-title {
-            text-align: center;
-            color: #e2e8f0;
-            margin-top: 0;
-            margin-bottom: 25px;
-        }
-
-        /* עיצוב הלשוניות */
-        .tabs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-            justify-content: center;
-        }
-
+        .tabs { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 25px; }
+        
         .tab-btn {
-            background-color: #0f172a;
-            color: #94a3b8;
-            border: 1px solid #334155;
-            padding: 10px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: bold;
+            background: #0f172a; color: #94a3b8; border: 1px solid #334155;
+            padding: 12px 20px; border-radius: 10px; cursor: pointer; font-weight: bold; transition: 0.3s;
         }
+        .tab-btn.active { background: #5865F2; color: white; border-color: #5865F2; box-shadow: 0 0 15px rgba(88, 101, 242, 0.4); }
 
-        .tab-btn:hover {
-            background-color: #334155;
-            color: white;
-        }
+        .tab-content { display: none; background: #0f172a; padding: 25px; border-radius: 12px; border: 1px solid #334155; line-height: 1.7; animation: fadeIn 0.4s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .tab-btn.active {
-            background-color: #5865F2; 
-            border-color: #5865F2;
-            color: white;
-            box-shadow: 0 0 10px rgba(88, 101, 242, 0.5);
-        }
+        pre { background: #000; padding: 15px; border-radius: 10px; overflow-x: auto; direction: ltr; text-align: left; border: 1px solid #334155; margin: 15px 0; }
+        code { color: #53fc18; font-family: monospace; }
 
-        .tab-content {
-            display: none;
-            background-color: #0f172a;
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid #334155;
-            line-height: 1.6;
-            color: #cbd5e1;
-            animation: fadeIn 0.4s;
-        }
+        /* --- פוטר --- */
+        .footer { margin-top: 50px; text-align: center; color: #94a3b8; }
+        .discord-tag { color: #5865F2; font-weight: bold; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .tab-content h3 {
-            color: #5865F2;
-            margin-top: 0;
-        }
-
-        pre {
-            background-color: #000;
-            padding: 15px;
-            border-radius: 8px;
-            overflow-x: auto;
-            direction: ltr;
-            text-align: left;
-            border: 1px solid #334155;
-        }
+        /* --- נגן מוזיקה --- */
+        .floating-music-container { position: fixed; bottom: 30px; right: 30px; z-index: 1000; display: flex; flex-direction: column; align-items: flex-end; }
+        .music-panel { background: #1e293b; border: 1px solid #334155; border-radius: 20px; padding: 18px; width: 300px; margin-bottom: 15px; display: none; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
+        .music-panel.show { display: block; animation: slideUp 0.3s ease; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
-        code {
-            font-family: Consolas, monospace;
-            color: #53fc18;
-        }
-
-        /* --- עיצוב נגן המוזיקה הצף --- */
-        .floating-music-container {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-
-        .music-panel {
-            background-color: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 15px;
-            padding: 15px;
-            width: 280px;
-            margin-bottom: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            display: none;
-            text-align: center;
-        }
-
-        .music-panel.show {
-            display: block;
-            animation: popUp 0.3s ease-out;
-        }
-
-        .music-panel h3 {
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-size: 16px;
-            color: #e2e8f0;
-        }
-
-        .artist-btn {
-            background-color: #0f172a;
-            color: white;
-            border: 1px solid #334155;
-            padding: 8px 15px;
-            border-radius: 8px;
-            margin: 5px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-weight: bold;
-        }
-
-        .artist-btn:hover {
-            background-color: #334155;
-            border-color: #e2e8f0;
-        }
-
-        .music-toggle-btn {
-            background: linear-gradient(45deg, #ff0050, #b000ff);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 15px 25px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 0 15px rgba(255, 0, 80, 0.5);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .music-toggle-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(176, 0, 255, 0.8);
-        }
-
-        /* --- עיצוב הפוטר --- */
-        .footer {
-            text-align: center;
-            width: 100%;
-            margin-top: 20px;
-            color: #94a3b8;
-            font-size: 14px;
-        }
-
-        .footer .contact {
-            color: #e2e8f0;
-            font-size: 16px;
-            margin-bottom: 15px;
-        }
-        
-        .footer .discord-tag {
-            color: #5865F2;
-            font-weight: bold;
+        .music-toggle-btn { 
+            background: linear-gradient(45deg, #ff0050, #b000ff); color: white; border: none; 
+            padding: 16px 28px; border-radius: 50px; font-weight: bold; cursor: pointer; box-shadow: 0 5px 20px rgba(255, 0, 80, 0.4);
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <img src="https://cdn.discordapp.com/avatars/1184520166059540563/794631dae2d89e31e1d4120cce221f30.png?size=512" alt="לוגו" class="profile-pic">
+    <div class="glow-orb orb-left"></div>
+    <div class="glow-orb orb-right"></div>
+    <div id="cursor-glow"></div>
 
-    <h2>הקישורים הרשמיים</h2>
-    <p style="color: #94a3b8; margin-bottom: 30px;">ברוכים הבאים לעמוד שלי!</p>
+    <div class="container">
+        <img src="https://cdn.discordapp.com/avatars/1184520166059540563/794631dae2d89e31e1d4120cce221f30.png?size=512" class="profile-pic">
+        <h2 style="margin-bottom: 5px;">Potteerr</h2>
+        <p style="color: #94a3b8; margin-bottom: 35px;">הקישורים הרשמיים שלי</p>
 
-    <a href="songs.html" class="link-btn neon-pink">השירים שאהבתי 💖</a>
-    <a href="https://spotify.com" class="link-btn neon-spotify">הפלייליסטים שלי בספוטיפיי 🎧</a>
-    <a href="https://www.youtube.com/@Ilay-Potteerr" class="link-btn neon-red">YouTube - הערוץ הרשמי 📺</a>
-    <a href="https://kick.com/ilay2342" class="link-btn neon-green">Kick - לייבים 🟩</a>
-</div>
-
-<div class="tutorial-container">
-    <h2 class="tutorial-title">🛠️ איך יצרנו את האתר?</h2>
-    
-    <div class="tabs">
-        <button class="tab-btn active" onclick="openTab(this, 'step1')">1. GitHub ופתיחת מאגר</button>
-        <button class="tab-btn" onclick="openTab(this, 'step2')">2. מה זה README?</button>
-        <button class="tab-btn" onclick="openTab(this, 'step3')">3. קוד האתר (HTML)</button>
-        <button class="tab-btn" onclick="openTab(this, 'step4')">4. עיצוב וניאון (CSS)</button>
+        <a href="songs" class="link-btn neon-pink">השירים שאהבתי 💖</a>
+        <a href="https://spotify.com" class="link-btn neon-spotify" target="_blank">הפלייליסטים שלי בספוטיפיי 🎧</a>
+        <a href="https://www.youtube.com/@Ilay-Potteerr" class="link-btn neon-red" target="_blank">YouTube - הערוץ הרשמי 📺</a>
+        <a href="https://kick.com/ilay2342" class="link-btn neon-green" target="_blank">Kick - לייבים 🟩</a>
     </div>
 
-    <div id="step1" class="tab-content" style="display: block;">
-        <h3>שלב 1: פתיחת המאגר ב-GitHub</h3>
-        <p>כדי שהאתר שלנו יהיה באוויר ובחינם, השתמשנו בשירות שנקרא <b>GitHub Pages</b>. ככה עושים את זה:</p>
-        <ol>
-            <li>נרשמים ופותחים משתמש חינמי באתר GitHub.</li>
-            <li>לוחצים על הכפתור הירוק <b>New Repository</b> כדי ליצור "תיקיית עבודה" חדשה ברשת.</li>
-            <li>הסוד הוא בשם המאגר: כדי שהאתר יקבל את הכתובת הראשית, חובה לקרוא למאגר בדיוק בשם המשתמש שלכם פלוס הסיומת, למשל: <code>username.github.io</code>.</li>
-            <li>מוודאים שהמאגר מוגדר כ-<b>Public</b> (פומבי) ולוחצים Create.</li>
-        </ol>
-    </div>
+    <div class="tutorial-container">
+        <h2 style="text-align: center; margin-bottom: 25px;">🛠️ איך יצרנו את האתר?</h2>
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab(this, 'step1')">GitHub</button>
+            <button class="tab-btn" onclick="openTab(this, 'step2')">README</button>
+            <button class="tab-btn" onclick="openTab(this, 'step3')">HTML</button>
+            <button class="tab-btn" onclick="openTab(this, 'step4')">CSS</button>
+        </div>
 
-    <div id="step2" class="tab-content">
-        <h3>מה זה קובץ README?</h3>
-        <p>קובץ ה-<b>README.md</b> הוא בעצם "עמוד השער" או תעודת הזהות של הפרויקט שלכם ב-GitHub.</p>
-        <p>כשמישהו נכנס למאגר הקוד שלכם, זה הדבר הראשון שהוא קורא. הוא נועד להסביר במילים פשוטות למה האתר הזה נועד, מי בנה אותו, ואיך להשתמש בו.</p>
-        <p>הקובץ נכתב בשפה קלה שנקראת Markdown, המאפשרת לעשות כותרות והדגשות בעזרת סימנים פשוטים.</p>
-    </div>
-
-    <div id="step3" class="tab-content">
-        <h3>שלב 3: כתיבת הקוד (index.html)</h3>
-        <p>השלד של כל אתר אינטרנט נקרא HTML. יצרנו קובץ בשם <code>index.html</code>.</p>
-        <p>כדי ליצור כפתור שמקשר למקום אחר, השתמשנו בתגית הקישור. הנה דוגמה לאיך שכפתור יוטיוב בנוי בקוד (השתמשנו בסימנים מיוחדים כדי להציג את זה):</p>
-<pre><code>&lt;a href="https://youtube.com" class="link-btn neon-red"&gt;
-    YouTube - הערוץ הרשמי 📺
-&lt;/a&gt;</code></pre>
-        <p>בתוך ה-<code>href</code> שמים את הקישור, ובתוך ה-<code>class</code> שמים את המחלקות שאחראיות על העיצוב.</p>
-    </div>
-
-    <div id="step4" class="tab-content">
-        <h3>שלב 4: עיצוב ואפקטים של ניאון</h3>
-        <p>כדי שהאתר לא ייראה משעמם, השתמשנו ב-<b>CSS</b> (בחלק העליון של הקוד).</p>
-        <p>כדי ליצור את אפקט הזוהר כשמעבירים את העכבר, השתמשנו ב-<code>box-shadow</code> בשילוב עם <code>:hover</code>. הנה הקוד שעושה את הקסם:</p>
-<pre><code>.neon-red:hover {
-    border-color: #ff0050;
-    box-shadow: 0 0 15px #ff0050, 0 0 30px #ff0050;
-    color: #ff0050;
-}</code></pre>
-    </div>
-</div>
-
-<div class="footer">
-    <div class="contact">
-        אם אתה צריך עוד עזרה במשהו, פנה אל <span class="discord-tag">_potteerr</span> בדיסקורד
-    </div>
-    <div>© 2026 Potteerr . כל הזכויות שמורות.</div>
-</div>
-
-<div class="floating-music-container">
-    <div class="music-panel" id="musicPanel">
-        <h3>🎵 הלהיטים החמים</h3>
-        <iframe id="yt-player" width="100%" height="150" src="https://www.youtube.com/embed/videoseries?list=PLojCWQm27CqgXW7r_j6yV-addX4hR_ARF" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="border-radius: 10px; margin-bottom: 10px;"></iframe>
-        <div>
-            <button class="artist-btn" onclick="changePlaylist('PLojCWQm27CqgXW7r_j6yV-addX4hR_ARF')">עומר אדם</button>
-            <button class="artist-btn" onclick="changePlaylist('PLBuClMIvTbnKjfAWSbHXNiBkEmKo6dQrn')">אושר כהן</button>
-            <button class="artist-btn" onclick="changePlaylist('PLRoAcjYkU72CK-54sA6hgYPvj1zUVCvuV')">פאר טסי</button>
+        <div id="step1" class="tab-content" style="display: block;">
+            <h3>1. פתיחת מאגר ב-GitHub</h3>
+            <p>השתמשנו ב-<b>GitHub Pages</b>. יוצרים Repository בשם <code>username.github.io</code> ומגדירים אותו כ-Public.</p>
+        </div>
+        <div id="step2" class="tab-content">
+            <h3>2. מה זה README?</h3>
+            <p>קובץ ה-<code>README.md</code> הוא "כרטיס הביקור" של הפרויקט. הוא מסביר לאחרים מה יש בתוך המאגר שלכם.</p>
+        </div>
+        <div id="step3" class="tab-content">
+            <h3>3. מבנה ה-HTML</h3>
+            <p>השתמשנו בתגיות כמו <code><a></code> לכפתורים ו-<code><div></code> לארגון התוכן.</p>
+<pre><code><a href="songs" class="link-btn">קישור</a></code></pre>
+        </div>
+        <div id="step4" class="tab-content">
+            <h3>4. עיצוב הניאון (CSS)</h3>
+            <p>האפקטים נוצרים בעזרת <code>box-shadow</code> שמופעל רק כשמעבירים עכבר (hover).</p>
         </div>
     </div>
-    <button class="music-toggle-btn" onclick="toggleMusic()">מוזיקה 🎵</button>
-</div>
 
-<script>
-    function openTab(btn, tabName) {
-        var i, tabcontent, tablinks;
-        
-        tabcontent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
+    <div class="footer">
+        <p>אם אתה צריך עוד עזרה, פנה אל <span class="discord-tag">_potteerr</span> בדיסקורד</p>
+        <p>© 2026 Potteerr . כל הזכויות שמורות.</p>
+    </div>
+
+    <div class="floating-music-container">
+        <div class="music-panel" id="musicPanel">
+            <h3 style="margin-top:0">🎵 נגן מוזיקה</h3>
+            <iframe id="yt-player" width="100%" height="160" src="https://www.youtube.com/embed/videoseries?list=PLojCWQm27CqgXW7r_j6yV-addX4hR_ARF" frameborder="0" allow="autoplay; encrypted-media" style="border-radius:12px"></iframe>
+            <div style="margin-top:15px; display:flex; flex-wrap:wrap; justify-content:center; gap:8px">
+                <button class="artist-btn" onclick="changePlaylist('PLojCWQm27CqgXW7r_j6yV-addX4hR_ARF')">עומר אדם</button>
+                <button class="artist-btn" onclick="changePlaylist('PLBuClMIvTbnKjfAWSbHXNiBkEmKo6dQrn')">אושר כהן</button>
+                <button class="artist-btn" onclick="changePlaylist('PLRoAcjYkU72CK-54sA6hgYPvj1zUVCvuV')">פאר טסי</button>
+            </div>
+        </div>
+        <button class="music-toggle-btn" onclick="toggleMusic()">מוזיקה 🎵</button>
+    </div>
+
+    <script>
+        // האור שעוקב אחרי העכבר
+        const glow = document.getElementById('cursor-glow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        // החלפת לשוניות במדריך
+        function openTab(btn, tabName) {
+            let contents = document.getElementsByClassName("tab-content");
+            for (let c of contents) c.style.display = "none";
+            let btns = document.getElementsByClassName("tab-btn");
+            for (let b of btns) b.classList.remove("active");
+            document.getElementById(tabName).style.display = "block";
+            btn.classList.add("active");
         }
-        
-        tablinks = document.getElementsByClassName("tab-btn");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        
-        document.getElementById(tabName).style.display = "block";
-        btn.className += " active";
-    }
 
-    function toggleMusic() {
-        var panel = document.getElementById("musicPanel");
-        panel.classList.toggle("show");
-    }
-
-    function changePlaylist(playlistId) {
-        var iframe = document.getElementById("yt-player");
-        iframe.src = "https://www.youtube.com/embed/videoseries?list=" + playlistId + "&autoplay=1";
-    }
-</script>
-
+        // נגן המוזיקה
+        function toggleMusic() { document.getElementById("musicPanel").classList.toggle("show"); }
+        function changePlaylist(id) { document.getElementById("yt-player").src = "https://www.youtube.com/embed/videoseries?list=" + id + "&autoplay=1"; }
+    </script>
 </body>
 </html>
