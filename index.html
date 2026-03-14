@@ -155,4 +155,155 @@
 
         .modal-content {
             margin: auto;
-            display: block
+            display: block;
+            max-width: 90%;
+            max-height: 90vh;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        /* כפתור הסגירה (X) */
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #4cd5de;
+            font-size: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        @media (max-width: 900px) {
+            .gallery { column-count: 2; }
+            .navbar { flex-direction: column; gap: 15px; text-align: center; }
+            .nav-links { flex-wrap: wrap; justify-content: center; }
+        }
+
+        @media (max-width: 600px) {
+            .gallery { column-count: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Potteerr תיק עבודות</div>
+        <ul class="nav-links">
+            <li><a href="#">בית</a></li>
+            <li><a href="#" class="active">עיצוב גרפי כללי</a></li>
+            <li><a href="#">טקסטורות לפייבאם</a></li>
+            <li><a href="#">גיפים</a></li>
+            <li><a href="#">יוצרי תוכן שעבדתי איתם</a></li>
+            <li><a href="#">יצירת קשר</a></li>
+        </ul>
+    </nav>
+
+    <div class="header-section">
+        <h1>עיצוב גרפי כללי</h1>
+        <div class="underline"></div>
+    </div>
+
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/9YDxGBl.jpeg" alt="עבודה 1">
+            <div class="overlay">
+                <div class="eye-circle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/disbjfs.jpeg" alt="עבודה 2">
+            <div class="overlay">
+                <div class="eye-circle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/ph8ncOJ.jpeg" alt="עבודה 3">
+            <div class="overlay">
+                <div class="eye-circle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/Cd3MI5g.jpeg" alt="עבודה 4">
+            <div class="overlay">
+                <div class="eye-circle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/VqOwD1F.png" alt="עבודה 5">
+            <div class="overlay">
+                <div class="eye-circle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/Dn5vORO.png" alt="עבודה 6">
+            <div class="overlay">
+                <div class="eye-circle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/uCWSg4b.png" alt="עבודה 7">
+            <div class="overlay">
+                <div class="eye-circle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="expandedImg">
+    </div>
+
+    <script>
+        // תפיסת האלמנטים הרלוונטיים
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("expandedImg");
+        const galleryItems = document.querySelectorAll(".gallery-item");
+        const span = document.getElementsByClassName("close")[0];
+
+        // מעבר על כל התמונות והוספת מאזין ללחיצה
+        galleryItems.forEach(item => {
+            item.addEventListener("click", function() {
+                modal.style.display = "block"; // מציג את החלון
+                modalImg.src = this.querySelector("img").src; // לוקח את הקישור מהתמונה שלחצנו עליה
+            });
+        });
+
+        // סגירה בעת לחיצה על ה-X
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // סגירה בעת לחיצה על הרקע השחור מסביב לתמונה
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
