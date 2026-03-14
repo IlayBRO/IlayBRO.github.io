@@ -63,7 +63,7 @@
         /* --- אזור כניסה (Hero) --- */
         .hero-section {
             position: relative;
-            background-image: url('https://i.postimg.cc/sQdZZFy5/hero-bg-jpg.png');
+            background-image: url('hero-bg.jpg'); /* נתיב התמונה השמורה במחשב שלך */
             background-size: cover;
             background-position: center;
             height: 55vh;
@@ -256,7 +256,7 @@
             max-width: 800px;
             margin: 40px auto;
             text-align: center;
-            background-color: #1f272f; /* אותו רקע כמו שאר האתר */
+            background-color: #1f272f; 
         }
 
         .about-section h1 {
@@ -286,11 +286,76 @@
             margin: 0;
         }
 
+        /* --- אזור ביקורות --- */
+        .reviews-section {
+            padding: 60px 40px;
+            background-color: #171d23; /* רקע טיפה יותר כהה להפרדה ויזואלית */
+            text-align: center;
+        }
+
+        .reviews-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background-color: #1f272f;
+            border-radius: 10px;
+            padding: 25px;
+            width: 320px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            border-top: 4px solid #4cd5de;
+            text-align: right;
+            transition: transform 0.3s;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #4cd5de;
+        }
+
+        .review-user-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.2rem;
+            color: #ffffff;
+        }
+
+        .review-stars {
+            color: #FFD700; /* צבע זהב לכוכבים */
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            font-size: 1.05rem;
+            line-height: 1.5;
+            color: #d1d1d1;
+            margin: 0;
+        }
+
         /* --- אזור יצירת קשר --- */
         .contact-section {
             padding: 60px 0 80px 0;
             text-align: center;
-            background-color: rgba(0,0,0,0.1); /* גוון מעט שונה כדי להפריד ויזואלית */
+            background-color: rgba(0,0,0,0.1); 
         }
 
         .discord-wrapper {
@@ -394,7 +459,7 @@
             <li><a href="#top">בית</a></li>
             <li><a href="#gallery">עיצוב גרפי כללי</a></li>
             <li><a href="#about">קצת עליי</a></li>
-            <li><a href="#">יוצרי תוכן שעבדתי איתם</a></li>
+            <li><a href="#reviews">ביקורות</a></li>
             <li><a href="#contact">יצירת קשר</a></li>
         </ul>
     </nav>
@@ -414,43 +479,60 @@
     </div>
 
     <div class="gallery">
-        <div class="gallery-item" data-index="0">
-            <img src="https://i.imgur.com/9YDxGBl.jpeg" alt="עבודה 1">
-            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
-        </div>
-        <div class="gallery-item" data-index="1">
-            <img src="https://i.imgur.com/disbjfs.jpeg" alt="עבודה 2">
-            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
-        </div>
-        <div class="gallery-item" data-index="2">
-            <img src="https://i.imgur.com/ph8ncOJ.jpeg" alt="עבודה 3">
-            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
-        </div>
-        <div class="gallery-item" data-index="3">
-            <img src="https://i.imgur.com/Cd3MI5g.jpeg" alt="עבודה 4">
-            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
-        </div>
-        <div class="gallery-item" data-index="4">
-            <img src="https://i.imgur.com/VqOwD1F.png" alt="עבודה 5">
-            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
-        </div>
-        <div class="gallery-item" data-index="5">
-            <img src="https://i.imgur.com/Dn5vORO.png" alt="עבודה 6">
-            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
-        </div>
-        <div class="gallery-item" data-index="6">
-            <img src="https://i.imgur.com/uCWSg4b.png" alt="עבודה 7">
-            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
-        </div>
+        <div class="gallery-item" data-index="0"><img src="MYKONOS(1).jpg" alt="עבודה 1"><div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div></div>
+        <div class="gallery-item" data-index="1"><img src="Police(1).jpg" alt="עבודה 2"><div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div></div>
+        <div class="gallery-item" data-index="2"><img src="CRIME(1).jpg" alt="עבודה 3"><div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div></div>
+        <div class="gallery-item" data-index="3"><img src="Welcome Crime.jpg" alt="עבודה 4"><div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div></div>
+        <div class="gallery-item" data-index="4"><img src="EMS.jpg" alt="עבודה 5"><div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div></div>
+        <div class="gallery-item" data-index="5"><img src="Police.jpg" alt="עבודה 6"><div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div></div>
+        <div class="gallery-item" data-index="6"><img src="Crime.jpg" alt="עבודה 7"><div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div></div>
     </div>
 
     <div id="about" class="about-section">
-        <h1>קצת עליי:</h1>
+        <h1>קצת עליי</h1>
         <div class="underline"></div>
         <p>אני עילאי בן 15, מעצב גרפי כבר חצי שנה, עם ידע רחב בפוטושופ.</p>
         
         <h2>איך התחלתי?</h2>
         <p>הכל מתחיל בלראות מלא סרטונים ביוטיוב של אנשים שמסבירים לך איך לערוך, ואז אתה מתחיל לשמור טמפלייטים PSD, ובסוף הכל מסתכם בזה שאתה פשוט עורך טוב.</p>
+    </div>
+
+    <div id="reviews" class="reviews-section">
+        <div class="header-section" style="margin-top: 0;">
+            <h1>ביקורות</h1>
+            <div class="underline"></div>
+        </div>
+
+        <div class="reviews-container">
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="https://via.placeholder.com/60/4cd5de/000000?text=U1" alt="לקוח 1" class="review-avatar">
+                    <div class="review-user-info">
+                        <h3>Omer_Gamer</h3> <div class="review-stars">★★★★★</div> </div>
+                </div>
+                <p class="review-text">עילי עשה לי עיצוב מטורף לשרת! מהיר, מקצועי ובדיוק מה שביקשתי. ממליץ בחום!</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="https://via.placeholder.com/60/4cd5de/000000?text=U2" alt="לקוח 2" class="review-avatar">
+                    <div class="review-user-info">
+                        <h3>NoyRP</h3>
+                        <div class="review-stars">★★★★☆</div> </div>
+                </div>
+                <p class="review-text">עבודה מעולה על הטקסטורות, אהבתי מאוד את הסגנון. שירות מעולה.</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="https://via.placeholder.com/60/4cd5de/000000?text=U3" alt="לקוח 3" class="review-avatar">
+                    <div class="review-user-info">
+                        <h3>Dan_IL</h3>
+                        <div class="review-stars">★★★★★</div> </div>
+                </div>
+                <p class="review-text">אחד המעצבים הכי טובים שיצא לי לעבוד איתם בתחום הפייבאם. תותח אמיתי!</p>
+            </div>
+        </div>
     </div>
 
     <div id="contact" class="contact-section">
@@ -474,7 +556,7 @@
     <footer class="site-footer">
         <ul class="footer-links">
             <li><a href="#contact">יצירת קשר</a></li>
-            <li><a href="#">יוצרי תוכן שעבדתי איתם</a></li>
+            <li><a href="#reviews">ביקורות</a></li>
             <li><a href="#about">קצת עליי</a></li>
             <li><a href="#gallery">עיצוב גרפי כללי</a></li>
             <li><a href="#top">בית</a></li>
