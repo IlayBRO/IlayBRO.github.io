@@ -1,272 +1,141 @@
 <!DOCTYPE html>
-
 <html lang="he" dir="rtl">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>עילאי - תיק עבודות</title>
-
+    <title>עילי - תיק עבודות</title>
     <style>
-
         /* ייבוא פונט בעברית מגוגל */
-
         @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;800&display=swap');
 
-
         body {
-
             margin: 0;
-
             font-family: 'Assistant', sans-serif;
-
-            background-color: #1f272f; /* רקע כהה */
-
+            background-color: #1f272f;
             color: #ffffff;
-
         }
-
-
-        /* עיצוב סרגל הניווט העליון */
 
         .navbar {
-
-            background-color: #4cd5de; /* צבע תכלת */
-
+            background-color: #4cd5de;
             color: #000000;
-
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
-
             padding: 15px 40px;
-
         }
-
 
         .logo {
-
             font-weight: 800;
-
             font-size: 1.3rem;
-
         }
-
 
         .nav-links {
-
             display: flex;
-
             gap: 5px;
-
             list-style: none;
-
             margin: 0;
-
             padding: 0;
-
         }
-
 
         .nav-links a {
-
             text-decoration: none;
-
             color: #000000;
-
             font-weight: 600;
-
             padding: 8px 16px;
-
             border-radius: 20px;
-
             transition: 0.3s;
-
             font-size: 0.95rem;
-
         }
-
-
-        /* עיצוב כפתור פעיל (כמו "עיצוב גרפי כללי") */
 
         .nav-links a.active {
-
             background-color: #1f272f;
-
             color: #4cd5de;
-
         }
-
 
         .nav-links a:hover {
-
             background-color: rgba(31, 39, 47, 0.1);
-
         }
-
-
-        /* עיצוב כותרת העמוד */
 
         .header-section {
-
             text-align: center;
-
             margin: 50px 0 40px 0;
-
         }
-
 
         .header-section h1 {
-
             margin-bottom: 10px;
-
             font-size: 2rem;
-
             font-weight: 600;
-
         }
-
 
         .header-section .underline {
-
             width: 40px;
-
             height: 3px;
-
             background-color: #4cd5de;
-
             margin: 0 auto;
-
         }
-
-
-        /* עיצוב גלריית התמונות */
 
         .gallery {
-
-            column-count: 3; /* שלוש עמודות של תמונות */
-
+            column-count: 3;
             column-gap: 15px;
-
             padding: 0 40px 40px 40px;
-
             max-width: 1400px;
-
             margin: 0 auto;
-
         }
-
 
         .gallery img {
-
             width: 100%;
-
             border-radius: 5px;
-
             margin-bottom: 15px;
-
             display: block;
-
-            break-inside: avoid; /* מונע מתמונה להחתך באמצע עמודה */
-
+            break-inside: avoid;
             transition: transform 0.3s ease;
-
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-
         }
-
 
         .gallery img:hover {
-
-            transform: scale(1.02); /* אפקט הגדלה קטן במעבר עכבר */
-
+            transform: scale(1.02);
             cursor: pointer;
-
         }
-
-
-        /* התאמה למסכים קטנים (פלאפונים) */
 
         @media (max-width: 900px) {
-
             .gallery { column-count: 2; }
-
             .navbar { flex-direction: column; gap: 15px; text-align: center; }
-
             .nav-links { flex-wrap: wrap; justify-content: center; }
-
         }
-
 
         @media (max-width: 600px) {
-
             .gallery { column-count: 1; }
-
         }
-
     </style>
-
 </head>
-
 <body>
 
-
     <nav class="navbar">
-
         <div class="logo">עילי תיק עבודות</div>
-
         <ul class="nav-links">
-
             <li><a href="#">בית</a></li>
-
             <li><a href="#" class="active">עיצוב גרפי כללי</a></li>
-
             <li><a href="#">טקסטורות לפייבאם</a></li>
-
             <li><a href="#">גיפים</a></li>
-
             <li><a href="#">יוצרי תוכן שעבדתי איתם</a></li>
-
             <li><a href="#">יצירת קשר</a></li>
-
         </ul>
-
     </nav>
 
-
     <div class="header-section">
-
         <h1>עיצוב גרפי כללי</h1>
-
         <div class="underline"></div>
-
     </div>
-
 
     <div class="gallery">
-
-        <img src="https://via.placeholder.com/400x600/2a3441/ffffff?text=Image+1" alt="עבודה 1">
-
-        <img src="https://via.placeholder.com/400x300/2a3441/ffffff?text=Image+2" alt="עבודה 2">
-
-        <img src="https://via.placeholder.com/400x500/2a3441/ffffff?text=Image+3" alt="עבודה 3">
-
-        <img src="https://via.placeholder.com/400x400/2a3441/ffffff?text=Image+4" alt="עבודה 4">
-
-        <img src="https://via.placeholder.com/400x700/2a3441/ffffff?text=Image+5" alt="עבודה 5">
-
-        <img src="https://via.placeholder.com/400x350/2a3441/ffffff?text=Image+6" alt="עבודה 6">
-
-        <img src="https://via.placeholder.com/400x450/2a3441/ffffff?text=Image+7" alt="עבודה 7">
-
+        <img src="MYKONOS(1).jpg" alt="מיקונוס">
+        <img src="Police(1).jpg" alt="משטרה 1">
+        <img src="CRIME(1).jpg" alt="פשע 1">
+        <img src="Welcome Crime.jpg" alt="ברוכים הבאים פשע">
+        <img src="EMS.jpg" alt="מדא">
+        <img src="Police.jpg" alt="משטרה">
+        <img src="Crime.jpg" alt="פשע">
     </div>
 
-
 </body>
-
 </html>
