@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Potteerr - דף בית</title>
+    <title>Potteerr - תיק עבודות</title>
     <style>
+        /* יצירת אפקט הגלילה החלקה כשלוחצים על קישור בתפריט */
         html {
             scroll-behavior: smooth;
         }
@@ -19,7 +20,6 @@
             color: #ffffff;
         }
 
-        /* --- תפריט ניווט --- */
         .navbar {
             background-color: #4cd5de;
             color: #000000;
@@ -56,7 +56,6 @@
             font-size: 0.95rem;
         }
 
-        /* הכפתור של דף הבית עכשיו פעיל */
         .nav-links a.active {
             background-color: #1f272f;
             color: #4cd5de;
@@ -66,81 +65,9 @@
             background-color: rgba(31, 39, 47, 0.1);
         }
 
-        /* --- אזור דף הבית (אודות) --- */
-        .about-hero {
-            position: relative;
-            background-image: url('https://i.imgur.com/ph8eV0V.jpeg');
-            background-size: cover;
-            background-position: center;
-            min-height: 85vh; /* גובה האזור */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-        }
-
-        /* רקע שקוף מעל התמונה כולה */
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(31, 39, 47, 0.4);
-            z-index: 1;
-        }
-
-        /* תיבת הטקסט - עיצוב זכוכית */
-        .about-content {
-            position: relative;
-            z-index: 2;
-            background: rgba(15, 20, 25, 0.75); /* רקע כהה שקוף */
-            backdrop-filter: blur(8px); /* טשטוש הרקע מאחור */
-            padding: 50px 60px;
-            border-radius: 20px;
-            max-width: 700px;
-            text-align: center;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-            border: 1px solid rgba(76, 213, 222, 0.2); /* מסגרת תכלת עדינה */
-        }
-
-        .about-content h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin: 0 0 15px 0;
-            color: #ffffff;
-        }
-
-        .hero-underline {
-            width: 80px;
-            height: 4px;
-            background-color: #4cd5de;
-            margin: 0 auto 25px auto;
-            border-radius: 2px;
-        }
-
-        .about-content h2 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin: 35px 0 15px 0;
-            color: #4cd5de; /* כותרת משנה בתכלת */
-        }
-
-        .about-content p {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            margin: 0;
-            color: #f0f0f0;
-            font-weight: 400;
-        }
-
-        /* --- אזור יצירת קשר --- */
-        .contact-section {
-            padding: 60px 0;
-            text-align: center;
-            background-color: #1f272f;
-        }
-
         .header-section {
             text-align: center;
-            margin: 0 0 40px 0;
+            margin: 50px 0 40px 0;
         }
 
         .header-section h1 {
@@ -156,6 +83,145 @@
             margin: 0 auto;
         }
 
+        /* גלריה */
+        .gallery {
+            column-count: 3;
+            column-gap: 15px;
+            padding: 0 40px 40px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 50vh;
+        }
+
+        .gallery-item {
+            position: relative;
+            margin-bottom: 15px;
+            break-inside: avoid;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.03);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(31, 39, 47, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .eye-circle {
+            background-color: #4cd5de;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: scale(0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .eye-circle {
+            transform: scale(1);
+        }
+
+        .eye-circle svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* חלון קופץ לתמונה */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(15, 20, 25, 0.9);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90vh;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #4cd5de;
+            font-size: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .close:hover, .close:focus {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        /* עיצוב כפתורי הניווט (ימינה ושמאלה) בחלון הקופץ */
+        .prev-btn, .next-btn {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: auto;
+            padding: 16px;
+            color: #4cd5de;
+            font-weight: bold;
+            font-size: 40px;
+            transition: 0.3s;
+            user-select: none;
+            z-index: 1001;
+            border-radius: 5px;
+        }
+
+        /* בגלל שזה מימין לשמאל: הכפתור הקודם נמצא בימין, הבא בשמאל */
+        .prev-btn { right: 20px; }
+        .next-btn { left: 20px; }
+
+        .prev-btn:hover, .next-btn:hover {
+            color: #ffffff;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        /* --- אזור יצירת קשר החדש --- */
+        .contact-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
         .discord-wrapper {
             display: flex;
             flex-direction: column;
@@ -164,7 +230,7 @@
         }
 
         .discord-circle {
-            background-color: #5865F2;
+            background-color: #5865F2; /* צבע המותג של דיסקורד */
             width: 140px;
             height: 140px;
             border-radius: 50%;
@@ -201,7 +267,7 @@
             letter-spacing: 1px;
         }
 
-        /* --- פוטר --- */
+        /* --- פוטר תחתון (פס תכלת) --- */
         .site-footer {
             background-color: #4cd5de;
             color: #000000;
@@ -238,11 +304,13 @@
         }
 
         @media (max-width: 900px) {
+            .gallery { column-count: 2; }
             .navbar { flex-direction: column; gap: 15px; text-align: center; }
             .nav-links { flex-wrap: wrap; justify-content: center; }
-            .about-content { padding: 30px; }
-            .about-content h1 { font-size: 2.5rem; }
-            .about-content p { font-size: 1.1rem; }
+        }
+
+        @media (max-width: 600px) {
+            .gallery { column-count: 1; }
         }
     </style>
 </head>
@@ -251,8 +319,8 @@
     <nav class="navbar">
         <div class="logo">Potteerr תיק עבודות</div>
         <ul class="nav-links">
-            <li><a href="#" class="active">בית</a></li>
-            <li><a href="design.html">עיצוב גרפי כללי</a></li>
+            <li><a href="#">בית</a></li>
+            <li><a href="#" class="active">עיצוב גרפי כללי</a></li>
             <li><a href="#">טקסטורות לפייבאם</a></li>
             <li><a href="#">גיפים</a></li>
             <li><a href="#">יוצרי תוכן שעבדתי איתם</a></li>
@@ -260,15 +328,39 @@
         </ul>
     </nav>
 
-    <div class="about-hero">
-        <div class="hero-overlay"></div>
-        <div class="about-content">
-            <h1>קצת עליי:</h1>
-            <div class="hero-underline"></div>
-            <p>אני עילאי בן 15, מעצב גרפי כבר חצי שנה, עם ידע רחב בפוטושופ.</p>
-            
-            <h2>איך התחלתי?</h2>
-            <p>הכל מתחיל בלראות מלא סרטונים ביוטיוב של אנשים שמסבירים לך איך לערוך, ואז אתה מתחיל לשמור טמפלייטים PSD, ובסוף הכל מסתכם בזה שאתה פשוט עורך טוב.</p>
+    <div class="header-section">
+        <h1>עיצוב גרפי כללי</h1>
+        <div class="underline"></div>
+    </div>
+
+    <div class="gallery">
+        <div class="gallery-item" data-index="0">
+            <img src="https://i.imgur.com/9YDxGBl.jpeg" alt="עבודה 1">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item" data-index="1">
+            <img src="https://i.imgur.com/disbjfs.jpeg" alt="עבודה 2">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item" data-index="2">
+            <img src="https://i.imgur.com/ph8ncOJ.jpeg" alt="עבודה 3">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item" data-index="3">
+            <img src="https://i.imgur.com/Cd3MI5g.jpeg" alt="עבודה 4">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item" data-index="4">
+            <img src="https://i.imgur.com/VqOwD1F.png" alt="עבודה 5">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item" data-index="5">
+            <img src="https://i.imgur.com/Dn5vORO.png" alt="עבודה 6">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item" data-index="6">
+            <img src="https://i.imgur.com/uCWSg4b.png" alt="עבודה 7">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
         </div>
     </div>
 
@@ -296,11 +388,76 @@
             <li><a href="#">יוצרי תוכן שעבדתי איתם</a></li>
             <li><a href="#">גיפים</a></li>
             <li><a href="#">טקסטורות לפייבאם</a></li>
-            <li><a href="design.html">עיצוב גרפי כללי</a></li>
+            <li><a href="#">עיצוב גרפי כללי</a></li>
             <li><a href="#">בית</a></li>
         </ul>
         <p>Copyright © 2026 All rights reserved - תיק עבודות - Potteerr</p>
     </footer>
+
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <span class="prev-btn" onclick="changeImage(-1)">&#10095;</span> <span class="next-btn" onclick="changeImage(1)">&#10094;</span> <img class="modal-content" id="expandedImg">
+    </div>
+
+    <script>
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("expandedImg");
+        const galleryItems = document.querySelectorAll(".gallery-item");
+        const span = document.getElementsByClassName("close")[0];
+        
+        const prevBtn = document.querySelector(".prev-btn");
+        const nextBtn = document.querySelector(".next-btn");
+
+        // שמירת כל התמונות במערך כדי שנוכל לדפדף ביניהן
+        let imagesArray = [];
+        let currentIndex = 0;
+
+        galleryItems.forEach((item, index) => {
+            imagesArray.push(item.querySelector("img").src);
+            
+            item.addEventListener("click", function() {
+                modal.style.display = "block";
+                currentIndex = parseInt(this.getAttribute("data-index"));
+                modalImg.src = imagesArray[currentIndex];
+                updateButtons();
+            });
+        });
+
+        // פונקציה להעברת התמונה
+        function changeImage(step) {
+            currentIndex += step;
+            modalImg.src = imagesArray[currentIndex];
+            updateButtons();
+        }
+
+        // פונקציה שמסתירה או מציגה את החצים בהתאם למיקום
+        function updateButtons() {
+            // אם אנחנו בתמונה הראשונה (הימנית ביותר), נעלים את החץ הימני
+            if (currentIndex === 0) {
+                prevBtn.style.display = "none";
+            } else {
+                prevBtn.style.display = "block";
+            }
+
+            // אם אנחנו בתמונה האחרונה (השמאלית ביותר), נעלים את החץ השמאלי
+            if (currentIndex === imagesArray.length - 1) {
+                nextBtn.style.display = "none";
+            } else {
+                nextBtn.style.display = "block";
+            }
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        modal.onclick = function(event) {
+            // מוודא שאנחנו סוגרים רק אם לחצו על הרקע ולא על התמונה או החצים
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 
 </body>
 </html>
