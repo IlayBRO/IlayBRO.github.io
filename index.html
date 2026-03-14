@@ -269,4 +269,449 @@
             max-width: 800px;
             margin: 40px auto;
             text-align: center;
-            background-color: #1f272f
+            background-color: #1f272f;
+        }
+
+        .about-section h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .about-section .underline {
+            width: 60px;
+            height: 3px;
+            background-color: #4cd5de;
+            margin: 0 auto 30px auto;
+        }
+
+        .about-section h2 {
+            font-size: 1.8rem;
+            color: #4cd5de;
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+
+        .about-section p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            color: #f0f0f0;
+            margin: 0;
+        }
+
+        /* --- אזור שרתים שעבדתי איתם (קרוסלה) --- */
+        .servers-section {
+            padding: 60px 20px;
+            background-color: #171d23;
+            text-align: center;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow: hidden; /* מסתיר את מה שמחוץ למסגרת */
+            border-radius: 10px;
+            background-color: #1f272f;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border-top: 4px solid #4cd5de;
+        }
+
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        .server-card {
+            min-width: 100%; /* כל כרטיס תופס 100% מרוחב הקרוסלה */
+            padding: 40px 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .server-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #4cd5de;
+            margin-bottom: 15px;
+            background-color: #fff; /* רקע לבן במידה והלוגו שקוף */
+        }
+
+        .server-name {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin: 0 0 10px 0;
+            color: #ffffff;
+        }
+
+        .server-review {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #d1d1d1;
+            max-width: 80%;
+            margin: 15px auto;
+            font-style: italic;
+        }
+        
+        .no-review {
+             color: #888;
+             font-style: italic;
+        }
+
+        /* כפתורי הקרוסלה */
+        .carousel-btn {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(76, 213, 222, 0.2);
+            color: #4cd5de;
+            border: none;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background-color: #4cd5de;
+            color: #1f272f;
+        }
+
+        /* הפוך כי זה RTL */
+        .carousel-btn.prev { right: 10px; }
+        .carousel-btn.next { left: 10px; }
+        
+        /* הודעה כשאין לאן לדפדף */
+        .no-more-servers {
+            color: #4cd5de;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            height: 20px; /* שומר על מקום קבוע */
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        /* --- אזור יצירת קשר --- */
+        .contact-section {
+            padding: 60px 0 80px 0;
+            text-align: center;
+            background-color: #1f272f; 
+        }
+
+        .discord-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .discord-circle {
+            background-color: #5865F2; 
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .discord-circle svg {
+            width: 80px;
+            height: 80px;
+            fill: #ffffff;
+        }
+
+        .discord-wrapper h3 {
+            font-size: 1.6rem;
+            margin: 0;
+            font-weight: 800;
+        }
+
+        .discord-underline {
+            width: 50px;
+            height: 3px;
+            background-color: #4cd5de;
+            margin: 15px 0;
+        }
+
+        .discord-wrapper p {
+            font-size: 1.2rem;
+            margin: 0;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* --- פוטר --- */
+        .site-footer {
+            background-color: #4cd5de;
+            color: #000000;
+            padding: 25px 20px 15px 20px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+            margin: 0 0 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover { opacity: 0.7; }
+
+        .site-footer p {
+            margin: 0;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 900px) {
+            .gallery { column-count: 2; }
+            .navbar { flex-direction: column; gap: 15px; text-align: center; }
+            .nav-links { flex-wrap: wrap; justify-content: center; }
+            .hero-content h1 { font-size: 3rem; }
+        }
+
+        @media (max-width: 600px) {
+            .gallery { column-count: 1; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .about-section p { font-size: 1.1rem; }
+            .carousel-btn { width: 30px; height: 30px; font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Potteerr תיק עבודות</div>
+        <ul class="nav-links">
+            <li><a href="#top">בית</a></li>
+            <li><a href="#gallery">עיצוב גרפי כללי</a></li>
+            <li><a href="#about">קצת עליי</a></li>
+            <li><a href="#servers">שרתים שעבדתי איתם</a></li>
+            <li><a href="#contact">יצירת קשר</a></li>
+        </ul>
+    </nav>
+
+    <div id="top" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>תיק עבודות</h1>
+            <div class="hero-underline"></div>
+            <h2>עיצוב גרפי וגיפים</h2>
+        </div>
+    </div>
+
+    <div id="gallery" class="header-section reveal">
+        <h1>עיצוב גרפי כללי</h1>
+        <div class="underline"></div>
+    </div>
+
+    <div class="gallery reveal">
+        <div class="gallery-item" data-index="0">
+            <img src="https://i.imgur.com/9YDxGBl.jpeg" alt="עבודה 1">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item" data-index="1">
+            <img src="https://i.imgur.com/disbjfs.jpeg" alt="עבודה 2">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item" data-index="2">
+            <img src="https://i.imgur.com/ph8ncOJ.jpeg" alt="עבודה 3">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item" data-index="3">
+            <img src="https://i.imgur.com/Cd3MI5g.jpeg" alt="עבודה 4">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item" data-index="4">
+            <img src="https://i.imgur.com/VqOwD1F.png" alt="עבודה 5">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item" data-index="5">
+            <img src="https://i.imgur.com/Dn5vORO.png" alt="עבודה 6">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item" data-index="6">
+            <img src="https://i.imgur.com/uCWSg4b.png" alt="עבודה 7">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+    </div>
+
+    <div id="about" class="about-section reveal">
+        <h1>קצת עליי:</h1>
+        <div class="underline"></div>
+        <p>אני עילאי בן 15, מעצב גרפי כבר חצי שנה, עם ידע רחב בפוטושופ.</p>
+        
+        <h2>איך התחלתי?</h2>
+        <p>הכל מתחיל בלראות מלא סרטונים ביוטיוב של אנשים שמסבירים לך איך לערוך, ואז אתה מתחיל לשמור טמפלייטים PSD, ובסוף הכל מסתכם בזה שאתה פשוט עורך טוב.</p>
+    </div>
+
+    <div id="servers" class="servers-section reveal">
+        <div class="header-section" style="margin-top: 0;">
+            <h1>שרתים שעבדתי איתם</h1>
+            <div class="underline"></div>
+        </div>
+
+        <div class="carousel-container">
+            <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10095;</button>
+            <button class="carousel-btn next" onclick="moveSlide(1)">&#10094;</button>
+
+            <div class="carousel-slides" id="serverSlides">
+                <div class="server-card">
+                    <img src="https://i.postimg.cc/6p0rYz0d/server1.png" alt="לוגו שרת Gamers-IL" class="server-logo">
+                    <h3 class="server-name">Gamers-IL</h3>
+                    
+                    <p class="server-review no-review">עדיין אין ביקורת לשרת זה.</p>
+                </div>
+            </div>
+        </div>
+        <div class="no-more-servers" id="noMoreServersMsg">אין שרתים נוספים להצגה</div>
+    </div>
+    <div id="contact" class="contact-section reveal">
+        <div class="header-section" style="margin-top: 0;">
+            <h1>יצירת קשר</h1>
+            <div class="underline"></div>
+        </div>
+        
+        <div class="discord-wrapper">
+            <div class="discord-circle">
+                <svg viewBox="0 0 127.14 96.36">
+                    <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.31,60,73.31,53s5-12.74,11.43-12.74S96.3,46,96.19,53,91.08,65.69,84.69,65.69Z"/>
+                </svg>
+            </div>
+            <h3>Discord</h3>
+            <div class="discord-underline"></div>
+            <p>Potteerr</p>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <ul class="footer-links">
+            <li><a href="#contact">יצירת קשר</a></li>
+            <li><a href="#servers">שרתים שעבדתי איתם</a></li>
+            <li><a href="#about">קצת עליי</a></li>
+            <li><a href="#gallery">עיצוב גרפי כללי</a></li>
+            <li><a href="#top">בית</a></li>
+        </ul>
+        <p>Copyright © 2026 All rights reserved - תיק עבודות - Potteerr</p>
+    </footer>
+
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <span class="prev-btn" onclick="changeImage(-1)">&#10095;</span>
+        <span class="next-btn" onclick="changeImage(1)">&#10094;</span>
+        <img class="modal-content" id="expandedImg">
+    </div>
+
+    <script>
+        // --- קוד הגלריה ---
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("expandedImg");
+        const galleryItems = document.querySelectorAll(".gallery-item");
+        const span = document.getElementsByClassName("close")[0];
+        const prevBtn = document.querySelector(".prev-btn");
+        const nextBtn = document.querySelector(".next-btn");
+
+        let imagesArray = [];
+        let currentIndex = 0;
+
+        galleryItems.forEach((item, index) => {
+            imagesArray.push(item.querySelector("img").src);
+            item.addEventListener("click", function() {
+                modal.style.display = "block";
+                currentIndex = parseInt(this.getAttribute("data-index"));
+                modalImg.src = imagesArray[currentIndex];
+                updateButtons();
+            });
+        });
+
+        function changeImage(step) {
+            currentIndex += step;
+            modalImg.src = imagesArray[currentIndex];
+            updateButtons();
+        }
+
+        function updateButtons() {
+            if (currentIndex === 0) {
+                prevBtn.style.display = "none";
+            } else {
+                prevBtn.style.display = "block";
+            }
+            if (currentIndex === imagesArray.length - 1) {
+                nextBtn.style.display = "none";
+            } else {
+                nextBtn.style.display = "block";
+            }
+        }
+
+        span.onclick = function() { modal.style.display = "none"; }
+        modal.onclick = function(event) {
+            if (event.target === modal) { modal.style.display = "none"; }
+        }
+
+        // --- קוד אנימציית גלילה (Fade-in) ---
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // כמה פיקסלים לפני שהאלמנט נכנס למסך להפעיל את האנימציה
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // להפעיל פעם אחת מיד בטעינה
+
+        // --- קוד קרוסלת השרתים ---
+        let currentSlide = 0;
+        const slidesContainer = document.getElementById('serverSlides');
+        const msg = document.getElementById('noMoreServersMsg');
+
+        function moveSlide(direction) {
+            // כל פעם שמוסיפים או מורידים שרתים, הקוד ידע לבד כמה שרתים יש
+            const totalSlides = document.querySelectorAll('.server-card').length;
+            let nextSlide = currentSlide + direction;
+            
+            // בודק אם הגענו לקצה (או אם יש רק שרת אחד)
+            if (nextSlide < 0 || nextSlide >= totalSlides) {
+                msg.style.opacity = "1";
+                setTimeout(() => { msg.style.opacity = "0"; }, 2000); // מעלים את ההודעה אחרי 2 שניות
+                return;
+            }
+
+            currentSlide = nextSlide;
+            // מזיז את הקרוסלה - בגלל שאנחנו ב-RTL (ימין לשמאל) הכיוון מתהפך
+            slidesContainer.style.transform = `translateX(${currentSlide * 100}%)`;
+        }
+    </script>
+
+</body>
+</html>
