@@ -336,11 +336,10 @@
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            object-fit: cover;
+            object-fit: contain; /* שומר על פרופורציות הלוגו */
             border: 3px solid #4cd5de;
             margin-bottom: 15px;
-            /* הסרתי את הרקע הלבן, עכשיו הוא שקוף ויקבל את צבע הקרוסלה (#1f272f) */
-            background-color: transparent; 
+            background-color: transparent; /* רקע שקוף */
         }
 
         .server-name {
@@ -606,7 +605,7 @@
                 </div>
                 
                 <div class="server-card">
-                    <img src="GameForceIL_logo.jpg" alt="לוגו שרת GameForceIL" class="server-logo">
+                    <img src="https://i.imgur.com/YWRe88Z.png" alt="לוגו שרת GameForceIL" class="server-logo">
                     <h3 class="server-name">GameForceIL</h3>
                     <p class="server-review no-review">עדיין אין ביקורת לשרת זה.</p>
                 </div>
@@ -723,7 +722,7 @@
             const totalSlides = document.querySelectorAll('.server-card').length;
             let nextSlide = currentSlide + direction;
             
-            // בודק אם הגענו לקצה (או אם יש רק שרת אחד)
+            // בודק אם הגענו לקצה
             if (nextSlide < 0 || nextSlide >= totalSlides) {
                 msg.style.opacity = "1";
                 setTimeout(() => { msg.style.opacity = "0"; }, 2000); // מעלים את ההודעה אחרי 2 שניות
