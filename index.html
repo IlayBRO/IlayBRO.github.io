@@ -336,10 +336,10 @@
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            object-fit: contain; /* שומר על פרופורציות הלוגו */
+            object-fit: contain;
             border: 3px solid #4cd5de;
             margin-bottom: 15px;
-            background-color: transparent; /* רקע שקוף */
+            background-color: transparent;
         }
 
         .server-name {
@@ -511,6 +511,7 @@
         <ul class="nav-links">
             <li><a href="#top">בית</a></li>
             <li><a href="#gallery">עיצוב גרפי כללי</a></li>
+            <li><a href="#youtube-gallery">עיצוב ליוטיוברים</a></li>
             <li><a href="#about">קצת עליי</a></li>
             <li><a href="#servers">שרתים שעבדתי איתם</a></li>
             <li><a href="#contact">יצירת קשר</a></li>
@@ -532,51 +533,63 @@
     </div>
 
     <div class="gallery reveal">
-        <div class="gallery-item" data-index="0">
+        <div class="gallery-item">
             <img src="https://i.imgur.com/9YDxGBl.jpeg" alt="עבודה 1">
             <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
         </div>
-        <div class="gallery-item" data-index="1">
+        <div class="gallery-item">
             <img src="https://i.imgur.com/disbjfs.jpeg" alt="עבודה 2">
             <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
         </div>
-        <div class="gallery-item" data-index="2">
+        <div class="gallery-item">
             <img src="https://i.imgur.com/ph8ncOJ.jpeg" alt="עבודה 3">
             <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
         </div>
-        <div class="gallery-item" data-index="3">
+        <div class="gallery-item">
             <img src="https://i.imgur.com/Cd3MI5g.jpeg" alt="עבודה 4">
             <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
         </div>
-        <div class="gallery-item" data-index="4">
+        <div class="gallery-item">
             <img src="https://i.imgur.com/VqOwD1F.png" alt="עבודה 5">
             <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
         </div>
-        <div class="gallery-item" data-index="5">
+        <div class="gallery-item">
             <img src="https://i.imgur.com/Dn5vORO.png" alt="עבודה 6">
             <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
         </div>
-        <div class="gallery-item" data-index="6">
+        <div class="gallery-item">
             <img src="https://i.imgur.com/uCWSg4b.png" alt="עבודה 7">
             <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
         </div>
-        <div class="gallery-item" data-index="7">
+        <div class="gallery-item">
             <img src="https://i.postimg.cc/FHktV1cq/Bhinot.png" alt="עבודה 8 - Bhinot">
             <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
         </div>
-        <div class="gallery-item" data-index="8">
+        <div class="gallery-item">
             <img src="https://i.imgur.com/szSxXSP.png" alt="עבודה 9">
             <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
         </div>
-        <div class="gallery-item" data-index="9">
+        <div class="gallery-item">
             <img src="https://i.imgur.com/4FfoyoZ.png" alt="עבודה 10">
             <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
         </div>
-        <div class="gallery-item" data-index="10">
+        <div class="gallery-item">
             <img src="https://i.imgur.com/wl4Pxji.jpeg" alt="עבודה 11">
             <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
         </div>
     </div>
+
+    <div id="youtube-gallery" class="header-section reveal">
+        <h1>עיצוב גרפי ליוטיוברים</h1>
+        <div class="underline"></div>
+    </div>
+
+    <div class="gallery reveal">
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/qXzzEyG.png" alt="עבודה ליוטיוברים 1">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        </div>
 
     <div id="about" class="about-section reveal">
         <h1>קצת עליי:</h1>
@@ -637,6 +650,7 @@
             <li><a href="#contact">יצירת קשר</a></li>
             <li><a href="#servers">שרתים שעבדתי איתם</a></li>
             <li><a href="#about">קצת עליי</a></li>
+            <li><a href="#youtube-gallery">עיצוב ליוטיוברים</a></li>
             <li><a href="#gallery">עיצוב גרפי כללי</a></li>
             <li><a href="#top">בית</a></li>
         </ul>
@@ -651,7 +665,7 @@
     </div>
 
     <script>
-        // --- קוד הגלריה ---
+        // --- קוד הגלריה - עודכן למספור אוטומטי! ---
         const modal = document.getElementById("imageModal");
         const modalImg = document.getElementById("expandedImg");
         const galleryItems = document.querySelectorAll(".gallery-item");
@@ -663,7 +677,10 @@
         let currentIndex = 0;
 
         galleryItems.forEach((item, index) => {
+            // הוספה אוטומטית של המספר (כבר לא צריך לכתוב data-index ב-HTML)
+            item.setAttribute("data-index", index);
             imagesArray.push(item.querySelector("img").src);
+            
             item.addEventListener("click", function() {
                 modal.style.display = "block";
                 currentIndex = parseInt(this.getAttribute("data-index"));
@@ -702,7 +719,7 @@
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100; // כמה פיקסלים לפני שהאלמנט נכנס למסך להפעיל את האנימציה
+                var elementVisible = 100;
 
                 if (elementTop < windowHeight - elementVisible) {
                     reveals[i].classList.add("active");
@@ -710,7 +727,7 @@
             }
         }
         window.addEventListener("scroll", reveal);
-        reveal(); // להפעיל פעם אחת מיד בטעינה
+        reveal();
 
         // --- קוד קרוסלת השרתים ---
         let currentSlide = 0;
@@ -718,19 +735,16 @@
         const msg = document.getElementById('noMoreServersMsg');
 
         function moveSlide(direction) {
-            // כל פעם שמוסיפים או מורידים שרתים, הקוד ידע לבד כמה שרתים יש
             const totalSlides = document.querySelectorAll('.server-card').length;
             let nextSlide = currentSlide + direction;
             
-            // בודק אם הגענו לקצה
             if (nextSlide < 0 || nextSlide >= totalSlides) {
                 msg.style.opacity = "1";
-                setTimeout(() => { msg.style.opacity = "0"; }, 2000); // מעלים את ההודעה אחרי 2 שניות
+                setTimeout(() => { msg.style.opacity = "0"; }, 2000);
                 return;
             }
 
             currentSlide = nextSlide;
-            // מזיז את הקרוסלה - בגלל שאנחנו ב-RTL (ימין לשמאל) הכיוון מתהפך
             slidesContainer.style.transform = `translateX(${currentSlide * 100}%)`;
         }
     </script>
