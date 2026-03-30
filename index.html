@@ -345,22 +345,8 @@
         .server-name {
             font-size: 1.8rem;
             font-weight: 800;
-            margin: 0 0 10px 0;
+            margin: 0;
             color: #ffffff;
-        }
-
-        .server-review {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #d1d1d1;
-            max-width: 80%;
-            margin: 15px auto;
-            font-style: italic;
-        }
-        
-        .no-review {
-             color: #888;
-             font-style: italic;
         }
 
         /* כפתורי הקרוסלה */
@@ -577,6 +563,18 @@
             <img src="https://i.imgur.com/wl4Pxji.jpeg" alt="עבודה 11">
             <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
         </div>
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/7FfrHr0.png" alt="עבודה 12">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/Z950gxO.png" alt="עבודה 13">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/JqIMxyd.png" alt="עבודה 14">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
     </div>
 
     <div id="youtube-gallery" class="header-section reveal">
@@ -589,7 +587,7 @@
             <img src="https://i.imgur.com/qXzzEyG.png" alt="עבודה ליוטיוברים 1">
             <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
         </div>
-        </div>
+    </div>
 
     <div id="about" class="about-section reveal">
         <h1>קצת עליי:</h1>
@@ -614,13 +612,16 @@
                 <div class="server-card">
                     <img src="https://i.postimg.cc/6p0rYz0d/server1.png" alt="לוגו שרת Gamers-IL" class="server-logo">
                     <h3 class="server-name">Gamers-IL</h3>
-                    <p class="server-review no-review">עדיין אין ביקורת לשרת זה.</p>
                 </div>
                 
                 <div class="server-card">
                     <img src="https://i.imgur.com/YWRe88Z.png" alt="לוגו שרת GameForceIL" class="server-logo">
                     <h3 class="server-name">GameForceIL</h3>
-                    <p class="server-review no-review">עדיין אין ביקורת לשרת זה.</p>
+                </div>
+
+                <div class="server-card">
+                    <img src="https://i.imgur.com/LTJ6QQL.png" alt="לוגו שרת New-Gamers" class="server-logo">
+                    <h3 class="server-name">New-Gamers</h3>
                 </div>
             </div>
         </div>
@@ -665,7 +666,7 @@
     </div>
 
     <script>
-        // --- קוד הגלריה - עודכן למספור אוטומטי! ---
+        // --- קוד הגלריה ---
         const modal = document.getElementById("imageModal");
         const modalImg = document.getElementById("expandedImg");
         const galleryItems = document.querySelectorAll(".gallery-item");
@@ -677,7 +678,6 @@
         let currentIndex = 0;
 
         galleryItems.forEach((item, index) => {
-            // הוספה אוטומטית של המספר (כבר לא צריך לכתוב data-index ב-HTML)
             item.setAttribute("data-index", index);
             imagesArray.push(item.querySelector("img").src);
             
