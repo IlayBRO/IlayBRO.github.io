@@ -50,7 +50,6 @@
             padding-bottom: 5px;
         }
 
-        /* רזולוציית טאמבנייל יוטיוב (16:9) */
         .article-image {
             width: 100%;
             aspect-ratio: 16 / 9;
@@ -62,12 +61,14 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         
-        h1 {
-            font-size: 42px;
+        h1, h2 {
             margin: 0 0 20px 0;
             color: #111;
             line-height: 1.1;
         }
+
+        h1 { font-size: 42px; }
+        h2 { font-size: 32px; border-right: 5px solid #d80000; padding-right: 15px; margin-top: 40px; }
         
         .article-text {
             font-size: 20px;
@@ -75,9 +76,7 @@
             color: #444;
         }
 
-        p {
-            margin-bottom: 20px;
-        }
+        p { margin-bottom: 20px; }
 
         .footer-section {
             border-top: 2px solid #eaeaea;
@@ -102,9 +101,7 @@
             transition: background 0.3s;
         }
         
-        .share-btn:hover {
-            background-color: #1557b0;
-        }
+        .share-btn:hover { background-color: #1557b0; }
     </style>
 </head>
 <body>
@@ -125,6 +122,8 @@
 
             <p>הם התחילו מניסויים עם דגמים קטנים בנו מנהרת רוח כדי לבדוק את הכנפיים ופיתחו את המטוס שלהם בהדרגה בשנת 1903 ביצעו את הטיסה המאוישת הראשונה אורוויל טס ראשון 12 שניות ובהמשך וילבור הצליח לטוס זמן ארוך יותר ובשליטה מלאה.</p>
 
+            <h2>עובדות מעניינות</h2>
+            
             <p>בילדותם קיבלו צעצוע “הליקופטר” שעורר אצלם עניין בטיסה בבגרותם ניהלו חנות אופניים שממנה מימנו את ניסויי התעופה שלהם לאורך השנים למדו מניסויים של אחרים כמו אוטו ליליינטל ושיפרו את הרעיונות עד שהצליחו.</p>
 
             <p><strong>לסיכום:</strong> האחים רייט הניחו את הבסיס לתעופה המודרנית בזכות ניסויים התמדה ופתרון בעיות טכניות חשובות.</p>
@@ -141,7 +140,7 @@
     <script>
         function copyLink() {
             navigator.clipboard.writeText(window.location.href).then(() => {
-                alert('הקישור לאתר הועתק בהצלחה!');
+                alert('הקישור הועתק בהצלחה!');
             });
         }
     </script>
