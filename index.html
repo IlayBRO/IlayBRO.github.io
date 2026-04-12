@@ -14,7 +14,6 @@
             color: #333;
         }
 
-        /* החלק העליון (Header) */
         header {
             background-color: #fff;
             border-top: 5px solid #d80000;
@@ -38,7 +37,6 @@
             font-weight: bold;
         }
 
-        /* תיבת הכתבה המרכזית */
         .container {
             max-width: 850px;
             margin: 30px auto;
@@ -46,10 +44,9 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             border-radius: 8px;
             overflow: hidden;
-            padding: 30px; /* ריווח פנימי */
+            padding: 30px;
         }
 
-        /* הקטגוריה מעל התמונה */
         .category-label {
             color: #d80000;
             font-weight: 900;
@@ -60,14 +57,15 @@
             padding-bottom: 5px;
         }
 
-        /* עיצוב התמונה שהוקטנה */
+        /* כאן הגדרתי פרופורציות של טאמבנייל ליוטיוב 16:9 */
         .article-image {
             width: 100%;
-            height: 280px; /* עשיתי את התמונה הרבה יותר קצרה/נמוכה */
-            object-fit: cover; /* מוודא שהתמונה חתוכה יפה ולא נמרחת */
+            aspect-ratio: 16 / 9; /* פרופורציה מדויקת של טאמבנייל יוטיוב */
+            object-fit: cover;
             border-radius: 6px;
             margin-bottom: 25px;
             background-color: #e0e0e0;
+            display: block;
         }
         
         h1 {
@@ -85,7 +83,6 @@
             color: #444;
         }
 
-        /* קרדיטים וכפתור */
         .footer-section {
             border-top: 2px solid #eaeaea;
             padding-top: 25px;
@@ -109,7 +106,6 @@
         }
         
         @media (max-width: 600px) {
-            .article-image { height: 200px; }
             h1 { font-size: 30px; }
             .footer-section { flex-direction: column; gap: 15px; text-align: center; }
         }
@@ -128,7 +124,7 @@
     <div class="container">
         <div class="category-label">כתבה - האחים רייט</div>
         
-        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Wright_Brothers_1903_flight.jpg" alt="האחים רייט" class="article-image">
+        <img src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1280&q=80" alt="מטוס עתיק - האחים רייט" class="article-image">
 
         <h1>האחים רייט</h1>
         
