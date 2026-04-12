@@ -50,15 +50,16 @@
             padding-bottom: 5px;
         }
 
-        /* עיצוב התמונה ביחס של טאמבנייל יוטיוב (16:9) */
         .article-image {
             width: 100%;
             aspect-ratio: 16 / 9;
             object-fit: cover;
+            object-position: center 15%; /* ממקד את התמונה על הפנים שלהם */
             border-radius: 6px;
             margin-bottom: 25px;
             background-color: #e0e0e0;
             display: block;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         
         h1 {
@@ -94,6 +95,11 @@
             font-weight: bold;
             border-radius: 6px;
             cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .share-btn:hover {
+            background-color: #1557b0;
         }
     </style>
 </head>
@@ -106,7 +112,7 @@
     <div class="container">
         <div class="category-label">כתבה - האחים רייט</div>
         
-        <img src="wright_brothers.jpg" alt="האחים רייט" class="article-image">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Wright_brothers_1905_portrait.jpg" alt="האחים רייט" class="article-image">
 
         <h1>האחים רייט</h1>
         
