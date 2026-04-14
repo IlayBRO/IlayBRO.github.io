@@ -3,148 +3,763 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>  האחים רייט – האנשים שהעלו את העולם לאוויר </title>
+    <title>Potteerr - תיק עבודות</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap');
+        /* יצירת אפקט הגלילה החלקה */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;800&display=swap');
 
         body {
-            font-family: 'Heebo', sans-serif;
             margin: 0;
-            background-color: #f4f6f8;
-            color: #333;
+            font-family: 'Assistant', sans-serif;
+            background-color: #1f272f;
+            color: #ffffff;
+            overflow-x: hidden; /* מונע גלילה אופקית בגלל אנימציות */
         }
 
-        header {
-            background-color: #fff;
-            border-top: 5px solid #d80000;
-            padding: 15px 30px;
+        /* --- אנימציית חשיפה בגלילה (Fade In Up) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- תפריט ניווט --- */
+        .navbar {
+            background-color: #4cd5de;
+            color: #000000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            padding: 15px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        
+
         .logo {
-            font-weight: 900;
-            font-size: 24px;
-            color: #d80000;
+            font-weight: 800;
+            font-size: 1.3rem;
         }
 
-        .container {
-            max-width: 850px;
-            margin: 30px auto;
-            background-color: #fff;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            overflow: hidden;
-            padding: 30px;
-        }
-
-        .category-label {
-            color: #d80000;
-            font-weight: 900;
-            font-size: 18px;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #d80000;
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-
-        /* רזולוציית טאמבנייל יוטיוב (16:9) */
-        .article-image {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            object-fit: cover;
-            border-radius: 6px;
-            margin-bottom: 25px;
-            background-color: #e0e0e0;
-            display: block;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        h1, h2 {
-            margin: 0 0 20px 0;
-            color: #111;
-            line-height: 1.1;
-        }
-
-        h1 { font-size: 42px; }
-        h2 { font-size: 32px; border-right: 5px solid #d80000; padding-right: 15px; margin-top: 40px; }
-        
-        .article-text {
-            font-size: 20px;
-            line-height: 1.8;
-            color: #444;
-        }
-
-        p { margin-bottom: 20px; }
-
-        .footer-section {
-            border-top: 2px solid #eaeaea;
-            margin-top: 40px;
-            padding-top: 25px;
+        .nav-links {
             display: flex;
-            justify-content: space-between;
+            gap: 5px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(31, 39, 47, 0.1);
+        }
+
+        /* --- אזור כניסה (Hero) --- */
+        .hero-section {
+            position: relative;
+            background-image: url('https://i.postimg.cc/sQdZZFy5/hero-bg-jpg.png');
+            background-size: cover;
+            background-position: center;
+            height: 55vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(31, 39, 47, 0.6);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin: 0 0 10px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content .hero-underline {
+            width: 80px;
+            height: 4px;
+            background-color: #4cd5de;
+            margin: 0 auto 15px auto;
+        }
+
+        .hero-content h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin: 0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* --- כותרות כלליות --- */
+        .header-section {
+            text-align: center;
+            margin: 0 0 40px 0;
+        }
+
+        .header-section h1 {
+            margin-bottom: 10px;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .header-section .underline {
+            width: 40px;
+            height: 3px;
+            background-color: #4cd5de;
+            margin: 0 auto;
+        }
+
+        /* --- גלריה --- */
+        .gallery {
+            column-count: 3;
+            column-gap: 15px;
+            padding: 0 40px 40px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            margin-bottom: 15px;
+            break-inside: avoid;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.03);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(31, 39, 47, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .eye-circle {
+            background-color: #4cd5de;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: scale(0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .eye-circle {
+            transform: scale(1);
+        }
+
+        .eye-circle svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* חלון קופץ לתמונות (Modal) */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0; top: 0; width: 100%; height: 100%; 
+            background-color: rgba(15, 20, 25, 0.9);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90vh;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #4cd5de;
+            font-size: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .close:hover, .close:focus { color: #ffffff; }
+
+        .prev-btn, .next-btn {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: auto;
+            padding: 16px;
+            color: #4cd5de;
+            font-weight: bold;
+            font-size: 40px;
+            transition: 0.3s;
+            user-select: none;
+            z-index: 1001;
+            border-radius: 5px;
+        }
+
+        .prev-btn { right: 20px; }
+        .next-btn { left: 20px; }
+
+        .prev-btn:hover, .next-btn:hover {
+            color: #ffffff;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        /* --- אזור קצת עליי --- */
+        .about-section {
+            padding: 60px 40px;
+            max-width: 800px;
+            margin: 40px auto;
+            text-align: center;
+            background-color: #1f272f;
+        }
+
+        .about-section h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .about-section .underline {
+            width: 60px;
+            height: 3px;
+            background-color: #4cd5de;
+            margin: 0 auto 30px auto;
+        }
+
+        .about-section h2 {
+            font-size: 1.8rem;
+            color: #4cd5de;
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+
+        .about-section p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            color: #f0f0f0;
+            margin: 0;
+        }
+
+        /* --- אזור שרתים שעבדתי איתם (קרוסלה) --- */
+        .servers-section {
+            padding: 60px 20px;
+            background-color: #171d23;
+            text-align: center;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow: hidden; /* מסתיר את מה שמחוץ למסגרת */
+            border-radius: 10px;
+            background-color: #1f272f;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border-top: 4px solid #4cd5de;
+        }
+
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        .server-card {
+            min-width: 100%; /* כל כרטיס תופס 100% מרוחב הקרוסלה */
+            padding: 40px 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
             align-items: center;
         }
-        
-        .credits { font-size: 16px; color: #666; }
-        
-        .share-btn {
-            background-color: #1a73e8;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.3s;
+
+        .server-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: contain;
+            border: 3px solid #4cd5de;
+            margin-bottom: 15px;
+            background-color: transparent;
         }
+
+        .server-name {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin: 0;
+            color: #ffffff;
+        }
+
+        /* כפתורי הקרוסלה */
+        .carousel-btn {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(76, 213, 222, 0.2);
+            color: #4cd5de;
+            border: none;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background-color: #4cd5de;
+            color: #1f272f;
+        }
+
+        /* הפוך כי זה RTL */
+        .carousel-btn.prev { right: 10px; }
+        .carousel-btn.next { left: 10px; }
         
-        .share-btn:hover { background-color: #1557b0; }
+        /* הודעה כשאין לאן לדפדף */
+        .no-more-servers {
+            color: #4cd5de;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            height: 20px; /* שומר על מקום קבוע */
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        /* --- אזור יצירת קשר --- */
+        .contact-section {
+            padding: 60px 0 80px 0;
+            text-align: center;
+            background-color: #1f272f; 
+        }
+
+        .discord-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .discord-circle {
+            background-color: #5865F2; 
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .discord-circle svg {
+            width: 80px;
+            height: 80px;
+            fill: #ffffff;
+        }
+
+        .discord-wrapper h3 {
+            font-size: 1.6rem;
+            margin: 0;
+            font-weight: 800;
+        }
+
+        .discord-underline {
+            width: 50px;
+            height: 3px;
+            background-color: #4cd5de;
+            margin: 15px 0;
+        }
+
+        .discord-wrapper p {
+            font-size: 1.2rem;
+            margin: 0;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* --- פוטר --- */
+        .site-footer {
+            background-color: #4cd5de;
+            color: #000000;
+            padding: 25px 20px 15px 20px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+            margin: 0 0 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover { opacity: 0.7; }
+
+        .site-footer p {
+            margin: 0;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 900px) {
+            .gallery { column-count: 2; }
+            .navbar { flex-direction: column; gap: 15px; text-align: center; }
+            .nav-links { flex-wrap: wrap; justify-content: center; }
+            .hero-content h1 { font-size: 3rem; }
+        }
+
+        @media (max-width: 600px) {
+            .gallery { column-count: 1; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .about-section p { font-size: 1.1rem; }
+            .carousel-btn { width: 30px; height: 30px; font-size: 16px; }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">האחים רייט - היסטוריה</div>
-    </header>
+    <nav class="navbar">
+        <div class="logo">Potteerr תיק עבודות</div>
+        <ul class="nav-links">
+            <li><a href="#top">בית</a></li>
+            <li><a href="#gallery">עיצוב גרפי כללי</a></li>
+            <li><a href="#youtube-gallery">עיצוב ליוטיוברים</a></li>
+            <li><a href="#banners-gallery">באנרים</a></li>
+            <li><a href="#about">קצת עליי</a></li>
+            <li><a href="#servers">שרתים שעבדתי איתם</a></li>
+            <li><a href="#contact">יצירת קשר</a></li>
+        </ul>
+    </nav>
 
-    <div class="container">
-        <div class="category-label">  האחים רייט – האנשים שהעלו את העולם לאוויר </div>
-        
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Wrightflyer.jpg/1280px-Wrightflyer.jpg" alt="מטוס האחים רייט" class="article-image">
-
-        <h1>מידע - האחים רייט</h1>
-        
-        <div class="article-text">
-            <p>האחים אורוויל רייט ווילבור רייט היו הראשונים שבאמת הצליחו לבנות ולהטיס מטוס עם מנוע שליטה ויכולת לשאת אדם. וילבור היה האח הגדול (נולד ב-16 באפריל 1867) ואורוויל היה הצעיר יותר (נולד ב-19 באוגוסט 1871).</p>
-
-            <p>לפני להאחים רייט כבר היו ניסיונות לבנות מטוסים אבל הם לא ממש עבדו טוב בעיקר בגלל בעיית שיווי המשקל שגרמה להם להיות לא יציבים ואפילו להתרסק. האחים רייט הצליחו להבין את הבעיה הזאת ולמצוא פתרון וככה הפכו את הטיסה ליותר יציבה ובטוחה.</p>
-
-            <p>הם לא הגיעו לזה ישר, הם התחילו מניסויים עם דגמים קטנים ובנו אפילו מנהרת רוח כדי לבדוק צורות שונות של כנפיים ולראות מה עובד הכי טוב. בעזרת כל הניסויים האלה הם שיפרו את המטוס שלהם שלב אחרי שלב.</p>
-
-            <p>בשנת 1903 הם סוף סוף הצליחו. אורוויל היה הראשון שטס למשך 12 שניות, אחר כך וילבור הצליח לטוס זמן ארוך יותר וגם לשלוט טוב יותר במטוס וזה בעצם מה שהתחיל את כל עולם התעופה כמו שאנחנו מכירים היום.</p>
-
-            <h2>עובדות מעניינות</h2>
-            
-            <p>בילדותם קיבלו צעצוע “הליקופטר” שעורר אצלם עניין בטיסה. בבגרותם ניהלו חנות אופניים שממנה מימנו את ניסויי התעופה שלהם. לאורך השנים למדו מניסויים של אנשים אחרים ושיפרו את הרעיונות עד שהצליחו.</p>
-        </div>
-
-        <div class="footer-section">
-            <div class="credits">
-                <strong>קרדיטים:</strong> עילאי, דניאל, אלעד, אור, גליה
-            </div>
-            <button class="share-btn" onclick="copyLink()">שתף כתבה 🔗</button>
+    <div id="top" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>תיק עבודות</h1>
+            <div class="hero-underline"></div>
+            <h2>עיצוב גרפי</h2>
         </div>
     </div>
 
+    <div id="gallery" class="header-section reveal">
+        <h1>עיצוב גרפי כללי</h1>
+        <div class="underline"></div>
+    </div>
+
+    <div class="gallery reveal">
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/9YDxGBl.jpeg" alt="עבודה 1">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/disbjfs.jpeg" alt="עבודה 2">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/ph8ncOJ.jpeg" alt="עבודה 3">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/Cd3MI5g.jpeg" alt="עבודה 4">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/VqOwD1F.png" alt="עבודה 5">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/Dn5vORO.png" alt="עבודה 6">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/uCWSg4b.png" alt="עבודה 7">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://i.postimg.cc/FHktV1cq/Bhinot.png" alt="עבודה 8 - Bhinot">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/szSxXSP.png" alt="עבודה 9">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/4FfoyoZ.png" alt="עבודה 10">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/wl4Pxji.jpeg" alt="עבודה 11">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/7FfrHr0.png" alt="עבודה 12">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/Z950gxO.png" alt="עבודה 13">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/JqIMxyd.png" alt="עבודה 14">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+    </div>
+
+    <div id="youtube-gallery" class="header-section reveal">
+        <h1>עיצוב גרפי ליוטיוברים</h1>
+        <div class="underline"></div>
+    </div>
+
+    <div class="gallery reveal">
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/qXzzEyG.png" alt="עבודה ליוטיוברים 1">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+    </div>
+
+    <div id="banners-gallery" class="header-section reveal">
+        <h1>באנרים</h1>
+        <div class="underline"></div>
+    </div>
+
+    <div class="gallery reveal">
+        <div class="gallery-item">
+            <img src="https://i.imgur.com/Zxtln34.png" alt="באנר 1">
+            <div class="overlay"><div class="eye-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div>
+        </div>
+        </div>
+
+    <div id="about" class="about-section reveal">
+        <h1>קצת עליי:</h1>
+        <div class="underline"></div>
+        <p>אני עילאי בן 15, מעצב גרפי כבר חצי שנה, עם ידע רחב בפוטושופ.</p>
+        
+        <h2>איך התחלתי?</h2>
+        <p>הכל מתחיל בלראות מלא סרטונים ביוטיוב של אנשים שמסבירים לך איך לערוך, ואז אתה מתחיל לשמור טמפלייטים PSD, ובסוף הכל מסתכם בזה שאתה פשוט עורך טוב.</p>
+    </div>
+
+    <div id="servers" class="servers-section reveal">
+        <div class="header-section" style="margin-top: 0;">
+            <h1>שרתים שעבדתי איתם</h1>
+            <div class="underline"></div>
+        </div>
+
+        <div class="carousel-container">
+            <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10095;</button>
+            <button class="carousel-btn next" onclick="moveSlide(1)">&#10094;</button>
+
+            <div class="carousel-slides" id="serverSlides">
+                <div class="server-card">
+                    <img src="https://i.postimg.cc/6p0rYz0d/server1.png" alt="לוגו שרת Gamers-IL" class="server-logo">
+                    <h3 class="server-name">Gamers-IL</h3>
+                </div>
+                
+                <div class="server-card">
+                    <img src="https://i.imgur.com/YWRe88Z.png" alt="לוגו שרת GameForceIL" class="server-logo">
+                    <h3 class="server-name">GameForceIL</h3>
+                </div>
+
+                <div class="server-card">
+                    <img src="https://i.imgur.com/LTJ6QQL.png" alt="לוגו שרת New-Gamers" class="server-logo">
+                    <h3 class="server-name">New-Gamers</h3>
+                </div>
+            </div>
+        </div>
+        <div class="no-more-servers" id="noMoreServersMsg">אין שרתים נוספים להצגה</div>
+    </div>
+    
+    <div id="contact" class="contact-section reveal">
+        <div class="header-section" style="margin-top: 0;">
+            <h1>יצירת קשר</h1>
+            <div class="underline"></div>
+        </div>
+        
+        <div class="discord-wrapper">
+            <div class="discord-circle">
+                <svg viewBox="0 0 127.14 96.36">
+                    <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.31,60,73.31,53s5-12.74,11.43-12.74S96.3,46,96.19,53,91.08,65.69,84.69,65.69Z"/>
+                </svg>
+            </div>
+            <h3>Discord</h3>
+            <div class="discord-underline"></div>
+            <p>Potteerr</p>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <ul class="footer-links">
+            <li><a href="#contact">יצירת קשר</a></li>
+            <li><a href="#servers">שרתים שעבדתי איתם</a></li>
+            <li><a href="#about">קצת עליי</a></li>
+            <li><a href="#banners-gallery">באנרים</a></li>
+            <li><a href="#youtube-gallery">עיצוב ליוטיוברים</a></li>
+            <li><a href="#gallery">עיצוב גרפי כללי</a></li>
+            <li><a href="#top">בית</a></li>
+        </ul>
+        <p>Copyright © 2026 All rights reserved - תיק עבודות - Potteerr</p>
+    </footer>
+
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <span class="prev-btn" onclick="changeImage(-1)">&#10095;</span>
+        <span class="next-btn" onclick="changeImage(1)">&#10094;</span>
+        <img class="modal-content" id="expandedImg">
+    </div>
+
     <script>
-        function copyLink() {
-            navigator.clipboard.writeText(window.location.href).then(() => {
-                alert('הקישור הועתק בהצלחה!');
+        // --- קוד הגלריה ---
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("expandedImg");
+        const galleryItems = document.querySelectorAll(".gallery-item");
+        const span = document.getElementsByClassName("close")[0];
+        const prevBtn = document.querySelector(".prev-btn");
+        const nextBtn = document.querySelector(".next-btn");
+
+        let imagesArray = [];
+        let currentIndex = 0;
+
+        galleryItems.forEach((item, index) => {
+            item.setAttribute("data-index", index);
+            imagesArray.push(item.querySelector("img").src);
+            
+            item.addEventListener("click", function() {
+                modal.style.display = "block";
+                currentIndex = parseInt(this.getAttribute("data-index"));
+                modalImg.src = imagesArray[currentIndex];
+                updateButtons();
             });
+        });
+
+        function changeImage(step) {
+            currentIndex += step;
+            modalImg.src = imagesArray[currentIndex];
+            updateButtons();
+        }
+
+        function updateButtons() {
+            if (currentIndex === 0) {
+                prevBtn.style.display = "none";
+            } else {
+                prevBtn.style.display = "block";
+            }
+            if (currentIndex === imagesArray.length - 1) {
+                nextBtn.style.display = "none";
+            } else {
+                nextBtn.style.display = "block";
+            }
+        }
+
+        span.onclick = function() { modal.style.display = "none"; }
+        modal.onclick = function(event) {
+            if (event.target === modal) { modal.style.display = "none"; }
+        }
+
+        // --- קוד אנימציית גלילה (Fade-in) ---
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+
+        // --- קוד קרוסלת השרתים ---
+        let currentSlide = 0;
+        const slidesContainer = document.getElementById('serverSlides');
+        const msg = document.getElementById('noMoreServersMsg');
+
+        function moveSlide(direction) {
+            const totalSlides = document.querySelectorAll('.server-card').length;
+            let nextSlide = currentSlide + direction;
+            
+            if (nextSlide < 0 || nextSlide >= totalSlides) {
+                msg.style.opacity = "1";
+                setTimeout(() => { msg.style.opacity = "0"; }, 2000);
+                return;
+            }
+
+            currentSlide = nextSlide;
+            slidesContainer.style.transform = `translateX(${currentSlide * 100}%)`;
         }
     </script>
 
